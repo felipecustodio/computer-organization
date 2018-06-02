@@ -44,11 +44,12 @@ typedef unsigned char byte;
 typedef unsigned char bit;
 typedef unsigned int word;
 
-#define STATUS_VALID 0
+#define STATUS_VALID          0
 #define STATUS_INVALID_INSTR  1
 #define STATUS_INVALID_ACCESS 2
 #define STATUS_INVALID_ALU    3
 #define STATUS_INVALID_REG    4
+#define STATUS_SUCCESS 	      5
 
 /*******************************************************/
 
@@ -62,6 +63,7 @@ FILE* f_debug = NULL;
 // |  STATUS  |
 // +----------+
 int status = 0; // status da saída
+int last_valid = 0; // posição da última instrução válida do programa
 
 // +----------------------+
 // |  FUNÇÕES AUXILIARES  |
@@ -111,6 +113,10 @@ char* status_message() {
             break;
         case STATUS_VALID:
             exit_message = ("Estado da saída ainda é válido.\n");
+		    break;
+		case STATUS_SUCCESS:
+			exit_message = ("Programa foi executado com sucesso.\n");
+			break;
     }
     return exit_message;
 }
@@ -1107,13 +1113,17 @@ void initialize(const char* source) {
 
 	// ler instruções do código fonte
     // acessar endereço inicial da memória
+    instr_counter = 0;
     memory_word_pointer = (word*)(MEMORY);
 	while (fscanf(bin, "%d ", &instruction) != EOF) {
         // copiar instrução para dentro da memória (tamanho = 1 word)
         (*memory_word_pointer) = instruction;
         // ir para próxima posição (+ 4 bytes)
         memory_word_pointer += 1;
+        instr_counter++;
 	}
+    // armazenar endereço da última instrução válida
+    last_valid = ((instr_counter - 1) * 4) - 4;
 
 	// fechar arquivo do código fonte
 	fclose(bin);
@@ -1292,14 +1302,25 @@ int check_status() {
     //     status = STATUS_INVALID_INSTR;
     // }
 
+    // checar se programa chegou ao fim
+    if (PC > last_valid && MAR > last_valid) {
+        printf("MAR = %d\n", MAR);
+        printf("last_valid = %d\n", last_valid);
+        status = STATUS_INVALID_INSTR;
+    }
+
     // operação inválida da ULA
     //  TODO ??
-    //
     // if () {
     //     status = STATUS_INVALID_ALU;
     // }
 
+	// checar se PC vai passar da ultima linha
+    //	if (PC > posiçao ultima instrucao) {
+    //			status = STATUS_INVALID_INSTR;
+
     // checar acesso ao banco de registradores
+	//
     // if (write_reg == NULL) {
     //     status = STATUS_INVALID_REG;
     // }
@@ -1425,15 +1446,6 @@ void debugger() {
     fprintf(f_debug, "PCControl: %d\n", PCControl);
 
     fprintf(f_debug, "\n");
-    fprintf(f_debug, "*** SINAIS DE ESTADO ***\n");
-
-    fprintf(f_debug, "next state: ");
-    for (i = 0; i < 5; i++) {
-        fprintf(f_debug, "%d", state[i]);
-    }
-    fprintf(f_debug, "\n");
-
-    fprintf(f_debug, "\n");
     fprintf(f_debug, "*** MEMÓRIA ***\n");
 
     memory_word_pointer = (word*)(MEMORY);
@@ -1445,6 +1457,12 @@ void debugger() {
 		}
 		fprintf(f_debug, "\n");
 	}
+
+    fprintf(f_debug, "next state: ");
+    for (i = 0; i < 5; i++) {
+        fprintf(f_debug, "%d", next_state[i]);
+    }
+    fprintf(f_debug, "\n");
 
     fprintf(f_debug, "\n");
     fprintf(f_debug, "************************************************************\n");
@@ -1487,13 +1505,19 @@ int main(int argc, char const *argv[]) {
 
     // teste com 3 clocks (comparar com saída do PDF)
     debugger();
-    // while (!(check_status())) {
-    while (i < 100) {
+	i = 0;
+    // while (i < 100) {
+    while (!(check_status())) {
         set();
         go();
         debugger();
         i++;
+        if (i > 100) {
+            printf("ERRO: Provável loop infinito. Saindo...\n");
+            exit(0);
+        }
     }
+    printf("Número de execuções do loop: %d\n\n", i);
 
     // finalizar execução e exibir informações na tela
     finalize();
