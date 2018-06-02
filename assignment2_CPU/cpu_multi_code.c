@@ -473,14 +473,11 @@ bit next_state[5];
 
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+* funcao()
+* SINAL DE CONTROLE: IORD
+* 0 - PEGA O VALOR DE PC
+* 1 - PEGA O VALOR DE ALUOUT
+* SAIDA: PARA ADDRESS EM MEMORY
  */
 void MUX_MEMORY() {
 	switch (IorD) {
@@ -512,14 +509,24 @@ void PROGRAM_COUNTER() {
 
 
 /*
- * funcao
+ * MEMORIA
  * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+ * ============================
+   #	    				  #
+   #		instruções		  #
+   #						  #
+   #--------------------------#
+   #\/ inicio mem dinamica \/ #
+   #						  #
+   #						  #
+   #						  #
+   #						  #
+   #						  #
+   #						  #
+   #						  #
+   #						  #
+   #  /\  inicio stack	/\	  #
+   ============================
  */
 void MEMORY_BANK() {
 	if (MemRead) {
@@ -712,13 +719,11 @@ void MUX_PC() {
 
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
+ * funcao()
+ * SINAL DE CONTROLE: BNE
+ * 0: ENVIA UM SINAL 0 PARA SETAR O SINAL DE PCCONTROL 
+ * 1: ENVIA UM SINAL 1 PARA SETAR O SINAL DE PCCONTROL
+ * SAIDA: PCCONTROL  argumento2:
  *
  */
 void MUX_BNE() {
@@ -734,14 +739,9 @@ void MUX_BNE() {
 
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+ * funcao()
+ * "DISSECACAO" DO IR
+ * SETANDO OPCODE, FUNCTION, RS, RT, RD, IMM E JMPADDR
  */
 void IR_SET() {
 	int i;
@@ -802,14 +802,11 @@ void SIGNAL_EXTEND_16_TO_32() {
 
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+ * funcao()
+ * CONTROLE DA ULA
+ * SETA OS BITS DE CONTROLE PARA
+ * REALIZAR A OPERACAO LOGICA
+ * OU ARITIMETICA DA INSTRUCAO
  */
 void ALU_CONTROL() {
 	switch(ALUOp1) {
@@ -866,14 +863,8 @@ void ALU_CONTROL() {
 
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+ * funcao()
+ * ULA
  */
 void ALU() {
 	// (ALUInput = 010) operação = add
@@ -900,14 +891,8 @@ void ALU() {
 
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+ * funcao()
+ * SAIDA ULA
  */
 void ALU_OUT() {
 	ALUOut = ALUResult;
@@ -915,14 +900,11 @@ void ALU_OUT() {
 
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+ * funcao()
+ * UNIDADE DE CONTROLE
+ * MEF PARA CONTROLE 
+ * DOS SINAIS RELATIVOS
+ * AS UNIDADES FUNCIONAIS
  */
  void CONTROL() {
 
@@ -975,6 +957,7 @@ void ALU_OUT() {
 	 MemtoReg1 = (state[0] & state[1] & !state[2] & state[3] & !state[4]) | (state[0] & !state[1] & state[2] & !state[3] & state[4]);
 
 	 // setando next state
+	 //NS[0] = (!S0 . !S1 . !S2 . !S3 . !S4 ) + (!S0 + S1 + !S2 + !S3 + !S4) + (!S0 + S1 + S2 + !S3 + !S4) + (!S0 + S1 + !S2 + !S3 + !S4) 
 	 next_state[0] = (!state[0] & !state[1] & !state[2] & !state[3] & !state[4]) | (!state[0] & state[1] & !state[2] & !state[3] & !state[4]) |
 					 (!state[0] & state[1] & state[2] & !state[3] & !state[4]) |
 						 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
@@ -1028,14 +1011,8 @@ void ALU_OUT() {
 // +-----------+
 
 /*
- * funcao
- * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
- *
+ * funcao()
+ * X
  */
 void initialize(const char* source) {
 	int i;
@@ -1107,7 +1084,7 @@ void start() {
 	int i;
 	// inicializar sinais de controle
 	// inicializa para o ciclo de busca
-	RegDst0     = 0;
+	RegDst0     = 0;	
 	RegDst1     = 0;
 	RegWrite    = 0;
 	ALUSrcA     = 0;
