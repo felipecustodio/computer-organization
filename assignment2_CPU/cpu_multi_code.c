@@ -1247,7 +1247,28 @@ void finalize() {
 	printf("A = %d\t", A);
 	printf("B = %d\t", B);
 	printf("AluOut = %d\n", ALUOut);
-	printf("Controle = []\n");
+	printf("Controle = [");
+    // bits do sinal de controle
+    printf("%d", RegDst0);
+    printf("%d", RegDst1);
+    printf("%d", RegWrite);
+    printf("%d", ALUSrcA);
+    printf("%d", ALUSrcB0);
+    printf("%d", ALUSrcB1);
+    printf("%d", ALUOp0);
+    printf("%d", ALUOp1);
+    printf("%d", PCSource0);
+    printf("%d", PCSource1);
+    printf("%d", PCWriteCond);
+    printf("%d", PCWrite);
+    printf("%d", IorD);
+    printf("%d", MemRead);
+    printf("%d", MemWrite);
+    printf("%d", BNE);
+    printf("%d", IRWrite);
+    printf("%d", MemtoReg0);
+    printf("%d", MemtoReg1);
+    printf("]\n");
 	printf("\n");
 
 	// exibir banco de registradores
