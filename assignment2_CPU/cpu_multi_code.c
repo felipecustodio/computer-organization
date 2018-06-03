@@ -1240,6 +1240,7 @@ void finalize() {
 	int i, j;
 	char* regid = NULL; // identificador do registrador (nome)
 	reg* current_reg = NULL; // ponteiro para registrador
+    int reg_data = 0; // conteúdo do registrador
     char* exit_message =  NULL; // mensagem de status da saída
 
     // exibir status da saída
@@ -1248,13 +1249,13 @@ void finalize() {
     printf("\n");
 
     // exibir registradores
-	printf("PC = %d\t", PC);
-	printf("IR = %d\t", IR);
-	printf("MDR = %d\t", MDR);
+	printf("PC = %u\t", PC);
+	printf("IR = %u\t", IR);
+	printf("MDR = %u\t", MDR);
 	printf("\n");
-	printf("A = %d\t", A);
-	printf("B = %d\t", B);
-	printf("AluOut = %d\n", ALUOut);
+	printf("A = %u\t", A);
+	printf("B = %u\t", B);
+	printf("AluOut = %u\n", ALUOut);
 	printf("Controle = [");
     // bits do sinal de controle
     printf("%d", RegDst0);
@@ -1285,7 +1286,8 @@ void finalize() {
 		for (j = i; j < (i + (8 * 4)); j+=8) {
 			regid = register_name(j);
 			current_reg = get_register(j);
-			printf("R%02d (%s) = %d\t", j, regid, (*current_reg));
+            reg_data = (int)((*current_reg));
+			printf("R%02d (%s) = %d\t", j, regid, reg_data);
 		}
 		printf("\n");
 	}
@@ -1367,30 +1369,17 @@ int check_status() {
         status = STATUS_INVALID_ACCESS;
     }
 
-    // checar se instrução é válida
-    // checar código de operação?
-    //  TODO
-    // if () {
-    //     status = STATUS_INVALID_INSTR;
-    // }
-
     // checar se instrução é inválida
     // 4294967295 = 00xffffffff = linha vazia
     if (MDR == 4294967295) {
         status = STATUS_INVALID_INSTR;
     }
 
-    // operação inválida da ULA
-    //  TODO ??
-    // if () {
-    //     status = STATUS_INVALID_ALU;
-    // }
-
     // checar acesso ao banco de registradores
-	//
-    // if (write_reg == NULL) {
-    //     status = STATUS_INVALID_REG;
-    // }
+	// (checar após início do programa, pois começa com null)
+    if (write_reg == NULL && clocks > 0) {
+        status = STATUS_INVALID_REG;
+    }
 
     // checar se programa já rodou mais
     // de MAX_RUNS vezes, o que pode indicar
@@ -1420,37 +1409,37 @@ void debugger() {
     fprintf(f_debug, "CLOCKS: %d\n\n", clocks);
     fprintf(f_debug, "*** IR ***\n");
     fprintf(f_debug, "op_code: ");
-    for (i = 0; i < 6; i++) {
+    for (i = 5; i > -1; i--) {
         fprintf(f_debug, "%d", op_code[i]);
     }
     fprintf(f_debug, "\n");
     fprintf(f_debug, "function: ");
-    for (i = 0; i < 6; i++) {
+    for (i = 5; i > -1; i--) {
         fprintf(f_debug, "%d", function[i]);
     }
     fprintf(f_debug, "\n");
     fprintf(f_debug, "rs: ");
-    for (i = 0; i < 5; i++) {
+    for (i = 4; i > -1; i--) {
         fprintf(f_debug, "%d", rs[i]);
     }
     fprintf(f_debug, "\n");
     fprintf(f_debug, "rt: ");
-    for (i = 0; i < 5; i++) {
+    for (i = 4; i > -1; i--) {
         fprintf(f_debug, "%d", rt[i]);
     }
     fprintf(f_debug, "\n");
     fprintf(f_debug, "rd: ");
-    for (i = 0; i < 5; i++) {
+    for (i = 4; i > -1; i--) {
         fprintf(f_debug, "%d", rd[i]);
     }
     fprintf(f_debug, "\n");
     fprintf(f_debug, "immediate: ");
-    for (i = 0; i < 16; i++) {
+    for (i = 15; i > -1; i--) {
         fprintf(f_debug, "%d", immediate[i]);
     }
     fprintf(f_debug, "\n");
     fprintf(f_debug, "jump_addr: ");
-    for (i = 0; i < 32; i++) {
+    for (i = 31; i > -1; i--) {
         fprintf(f_debug, "%d", jump_addr[i]);
     }
     fprintf(f_debug, "\n");
@@ -1482,7 +1471,7 @@ void debugger() {
     fprintf(f_debug, "A: %d\n", A);
     fprintf(f_debug, "B: %d\n", B);
     fprintf(f_debug, "ALUInput: ");
-    for (i = 0; i < 3; i++) {
+    for (i = 2; i > -1; i--) {
         fprintf(f_debug, "%d", ALUInput[i]);
     }
     fprintf(f_debug, "\n");
@@ -1554,11 +1543,14 @@ void debugger() {
  *
  */
 void cycle() {
-    while (!status) {
+    while (1) {
         check_status();
         set();
         go();
         debugger();
+        if (status) {
+            break;
+        }
     }
 }
 
@@ -1574,11 +1566,9 @@ void cycle() {
  */
 void interactive() {
     char buffer = '\n';
-    system("clear");
+    // system("clear");
     while (buffer == '\n') {
-        if (check_status()) {
-            break;
-        }
+        check_status();
         printf("CLOCK ATUAL: %d\n", clocks);
         finalize();
         printf("continuar? ");
@@ -1586,9 +1576,13 @@ void interactive() {
         set();
         go();
         debugger();
-        system("clear");
+        // system("clear");
+        printf("\n\n");
+        if (status) {
+            break;
+        }
     }
-    system("clear");
+    // system("clear");
 }
 
 

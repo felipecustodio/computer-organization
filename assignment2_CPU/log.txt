@@ -76,13 +76,13 @@ next state: 0
 CLOCKS: 1
 
 *** IR ***
-op_code: 110000
+op_code: 000011
 function: 010010
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0100100000000000
-jump_addr: 01001000000000000000000000000000
+immediate: 0000000000010010
+jump_addr: 00000000000000000000000000010010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -151,13 +151,13 @@ next state: 1
 CLOCKS: 2
 
 *** IR ***
-op_code: 110000
+op_code: 000011
 function: 010010
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0100100000000000
-jump_addr: 01001000000000000000000000000000
+immediate: 0000000000010010
+jump_addr: 00000000000000000000000000010010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -226,13 +226,13 @@ next state: 17
 CLOCKS: 3
 
 *** IR ***
-op_code: 110000
+op_code: 000011
 function: 010010
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0100100000000000
-jump_addr: 01001000000000000000000000000000
+immediate: 0000000000010010
+jump_addr: 00000000000000000000000000010010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -307,7 +307,7 @@ rs: 00100
 rt: 00100
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000010000100000000
+jump_addr: 00000000100001000000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -382,7 +382,7 @@ rs: 00100
 rt: 00100
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000010000100000000
+jump_addr: 00000000100001000000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -457,7 +457,7 @@ rs: 00100
 rt: 00100
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000010000100000000
+jump_addr: 00000000100001000000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -532,7 +532,7 @@ rs: 00100
 rt: 00100
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000010000100000000
+jump_addr: 00000000100001000000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -601,13 +601,13 @@ next state: 0
 CLOCKS: 8
 
 *** IR ***
-op_code: 000100
+op_code: 001000
 function: 111111
 rs: 00000
-rt: 10100
+rt: 00101
 rd: 11111
 immediate: 1111111111111111
-jump_addr: 11111111111111111010000000000000
+jump_addr: 00000000000001011111111111111111
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -676,13 +676,13 @@ next state: 1
 CLOCKS: 9
 
 *** IR ***
-op_code: 000100
+op_code: 001000
 function: 111111
 rs: 00000
-rt: 10100
+rt: 00101
 rd: 11111
 immediate: 1111111111111111
-jump_addr: 11111111111111111010000000000000
+jump_addr: 00000000000001011111111111111111
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -751,13 +751,13 @@ next state: 12
 CLOCKS: 10
 
 *** IR ***
-op_code: 000100
+op_code: 001000
 function: 111111
 rs: 00000
-rt: 10100
+rt: 00101
 rd: 11111
 immediate: 1111111111111111
-jump_addr: 11111111111111111010000000000000
+jump_addr: 00000000000001011111111111111111
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -826,13 +826,13 @@ next state: 13
 CLOCKS: 11
 
 *** IR ***
-op_code: 000100
+op_code: 001000
 function: 111111
 rs: 00000
-rt: 10100
+rt: 00101
 rd: 11111
 immediate: 1111111111111111
-jump_addr: 11111111111111111010000000000000
+jump_addr: 00000000000001011111111111111111
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -903,11 +903,11 @@ CLOCKS: 12
 *** IR ***
 op_code: 001100
 function: 001100
-rs: 10100
-rt: 01100
+rs: 00101
+rt: 00110
 rd: 00000
-immediate: 0011000000000000
-jump_addr: 00110000000000000110010100000000
+immediate: 0000000000001100
+jump_addr: 00000000101001100000000000001100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -978,11 +978,11 @@ CLOCKS: 13
 *** IR ***
 op_code: 001100
 function: 001100
-rs: 10100
-rt: 01100
+rs: 00101
+rt: 00110
 rd: 00000
-immediate: 0011000000000000
-jump_addr: 00110000000000000110010100000000
+immediate: 0000000000001100
+jump_addr: 00000000101001100000000000001100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -1053,11 +1053,11 @@ CLOCKS: 14
 *** IR ***
 op_code: 001100
 function: 001100
-rs: 10100
-rt: 01100
+rs: 00101
+rt: 00110
 rd: 00000
-immediate: 0011000000000000
-jump_addr: 00110000000000000110010100000000
+immediate: 0000000000001100
+jump_addr: 00000000101001100000000000001100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -1128,11 +1128,11 @@ CLOCKS: 15
 *** IR ***
 op_code: 001100
 function: 001100
-rs: 10100
-rt: 01100
+rs: 00101
+rt: 00110
 rd: 00000
-immediate: 0011000000000000
-jump_addr: 00110000000000000110010100000000
+immediate: 0000000000001100
+jump_addr: 00000000101001100000000000001100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -1201,13 +1201,13 @@ next state: 0
 CLOCKS: 16
 
 *** IR ***
-op_code: 000100
-function: 001000
+op_code: 001000
+function: 000100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000001100000000000
+immediate: 0000000000000100
+jump_addr: 00000000000110000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -1276,13 +1276,13 @@ next state: 1
 CLOCKS: 17
 
 *** IR ***
-op_code: 000100
-function: 001000
+op_code: 001000
+function: 000100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000001100000000000
+immediate: 0000000000000100
+jump_addr: 00000000000110000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -1351,13 +1351,13 @@ next state: 12
 CLOCKS: 18
 
 *** IR ***
-op_code: 000100
-function: 001000
+op_code: 001000
+function: 000100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000001100000000000
+immediate: 0000000000000100
+jump_addr: 00000000000110000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 0	
@@ -1426,13 +1426,13 @@ next state: 13
 CLOCKS: 19
 
 *** IR ***
-op_code: 000100
-function: 001000
+op_code: 001000
+function: 000100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000001100000000000
+immediate: 0000000000000100
+jump_addr: 00000000000110000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -1501,13 +1501,13 @@ next state: 0
 CLOCKS: 20
 
 *** IR ***
-op_code: 101010
+op_code: 010101
 function: 000000
-rs: 00011
+rs: 11000
 rt: 11111
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000001111100011000000
+jump_addr: 00000011000111110000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -1576,13 +1576,13 @@ next state: 1
 CLOCKS: 21
 
 *** IR ***
-op_code: 101010
+op_code: 010101
 function: 000000
-rs: 00011
+rs: 11000
 rt: 11111
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000001111100011000000
+jump_addr: 00000011000111110000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -1651,13 +1651,13 @@ next state: 11
 CLOCKS: 22
 
 *** IR ***
-op_code: 101010
+op_code: 010101
 function: 000000
-rs: 00011
+rs: 11000
 rt: 11111
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000001111100011000000
+jump_addr: 00000011000111110000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -1726,13 +1726,13 @@ next state: 0
 CLOCKS: 23
 
 *** IR ***
-op_code: 000100
-function: 010100
+op_code: 001000
+function: 001010
 rs: 00000
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 0101000000000000
-jump_addr: 01010000000000000001000000000000
+immediate: 0000000000001010
+jump_addr: 00000000000010000000000000001010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -1801,13 +1801,13 @@ next state: 1
 CLOCKS: 24
 
 *** IR ***
-op_code: 000100
-function: 010100
+op_code: 001000
+function: 001010
 rs: 00000
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 0101000000000000
-jump_addr: 01010000000000000001000000000000
+immediate: 0000000000001010
+jump_addr: 00000000000010000000000000001010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -1876,13 +1876,13 @@ next state: 12
 CLOCKS: 25
 
 *** IR ***
-op_code: 000100
-function: 010100
+op_code: 001000
+function: 001010
 rs: 00000
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 0101000000000000
-jump_addr: 01010000000000000001000000000000
+immediate: 0000000000001010
+jump_addr: 00000000000010000000000000001010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -1951,13 +1951,13 @@ next state: 13
 CLOCKS: 26
 
 *** IR ***
-op_code: 000100
-function: 010100
+op_code: 001000
+function: 001010
 rs: 00000
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 0101000000000000
-jump_addr: 01010000000000000001000000000000
+immediate: 0000000000001010
+jump_addr: 00000000000010000000000000001010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2026,13 +2026,13 @@ next state: 0
 CLOCKS: 27
 
 *** IR ***
-op_code: 000100
-function: 100000
+op_code: 001000
+function: 000001
 rs: 00000
-rt: 10010
+rt: 01001
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001001000000000000
+immediate: 0000000000000001
+jump_addr: 00000000000010010000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2101,13 +2101,13 @@ next state: 1
 CLOCKS: 28
 
 *** IR ***
-op_code: 000100
-function: 100000
+op_code: 001000
+function: 000001
 rs: 00000
-rt: 10010
+rt: 01001
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001001000000000000
+immediate: 0000000000000001
+jump_addr: 00000000000010010000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2176,13 +2176,13 @@ next state: 12
 CLOCKS: 29
 
 *** IR ***
-op_code: 000100
-function: 100000
+op_code: 001000
+function: 000001
 rs: 00000
-rt: 10010
+rt: 01001
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001001000000000000
+immediate: 0000000000000001
+jump_addr: 00000000000010010000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2251,13 +2251,13 @@ next state: 13
 CLOCKS: 30
 
 *** IR ***
-op_code: 000100
-function: 100000
+op_code: 001000
+function: 000001
 rs: 00000
-rt: 10010
+rt: 01001
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001001000000000000
+immediate: 0000000000000001
+jump_addr: 00000000000010010000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2326,13 +2326,13 @@ next state: 0
 CLOCKS: 31
 
 *** IR ***
-op_code: 000100
-function: 010000
+op_code: 001000
+function: 000010
 rs: 00000
 rt: 01010
 rd: 00000
-immediate: 0100000000000000
-jump_addr: 01000000000000000101000000000000
+immediate: 0000000000000010
+jump_addr: 00000000000010100000000000000010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2401,13 +2401,13 @@ next state: 1
 CLOCKS: 32
 
 *** IR ***
-op_code: 000100
-function: 010000
+op_code: 001000
+function: 000010
 rs: 00000
 rt: 01010
 rd: 00000
-immediate: 0100000000000000
-jump_addr: 01000000000000000101000000000000
+immediate: 0000000000000010
+jump_addr: 00000000000010100000000000000010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2476,13 +2476,13 @@ next state: 12
 CLOCKS: 33
 
 *** IR ***
-op_code: 000100
-function: 010000
+op_code: 001000
+function: 000010
 rs: 00000
 rt: 01010
 rd: 00000
-immediate: 0100000000000000
-jump_addr: 01000000000000000101000000000000
+immediate: 0000000000000010
+jump_addr: 00000000000010100000000000000010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2551,13 +2551,13 @@ next state: 13
 CLOCKS: 34
 
 *** IR ***
-op_code: 000100
-function: 010000
+op_code: 001000
+function: 000010
 rs: 00000
 rt: 01010
 rd: 00000
-immediate: 0100000000000000
-jump_addr: 01000000000000000101000000000000
+immediate: 0000000000000010
+jump_addr: 00000000000010100000000000000010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2626,13 +2626,13 @@ next state: 0
 CLOCKS: 35
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2701,13 +2701,13 @@ next state: 1
 CLOCKS: 36
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2776,13 +2776,13 @@ next state: 8
 CLOCKS: 37
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2804,7 +2804,7 @@ pc_write_data: 32
 *** ULA ***
 A: 0
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -10
 ALUOut: -10
 immediate_extended: 3
@@ -2852,12 +2852,12 @@ CLOCKS: 38
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -2927,12 +2927,12 @@ CLOCKS: 39
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3002,12 +3002,12 @@ CLOCKS: 40
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3077,12 +3077,12 @@ CLOCKS: 41
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3152,12 +3152,12 @@ CLOCKS: 42
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3227,12 +3227,12 @@ CLOCKS: 43
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3302,12 +3302,12 @@ CLOCKS: 44
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3329,7 +3329,7 @@ pc_write_data: 65546
 *** ULA ***
 A: 65547
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65546
 ALUOut: 65546
 immediate_extended: 12322
@@ -3377,12 +3377,12 @@ CLOCKS: 45
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3451,13 +3451,13 @@ next state: 0
 CLOCKS: 46
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3526,13 +3526,13 @@ next state: 1
 CLOCKS: 47
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3601,13 +3601,13 @@ next state: 9
 CLOCKS: 48
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3676,13 +3676,13 @@ next state: 0
 CLOCKS: 49
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3751,13 +3751,13 @@ next state: 1
 CLOCKS: 50
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3826,13 +3826,13 @@ next state: 8
 CLOCKS: 51
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3854,7 +3854,7 @@ pc_write_data: 32
 *** ULA ***
 A: 1
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -9
 ALUOut: -9
 immediate_extended: 3
@@ -3902,12 +3902,12 @@ CLOCKS: 52
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -3977,12 +3977,12 @@ CLOCKS: 53
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4052,12 +4052,12 @@ CLOCKS: 54
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4127,12 +4127,12 @@ CLOCKS: 55
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4202,12 +4202,12 @@ CLOCKS: 56
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4277,12 +4277,12 @@ CLOCKS: 57
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4352,12 +4352,12 @@ CLOCKS: 58
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4379,7 +4379,7 @@ pc_write_data: 65545
 *** ULA ***
 A: 65546
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65545
 ALUOut: 65545
 immediate_extended: 12322
@@ -4427,12 +4427,12 @@ CLOCKS: 59
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4501,13 +4501,13 @@ next state: 0
 CLOCKS: 60
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4576,13 +4576,13 @@ next state: 1
 CLOCKS: 61
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4651,13 +4651,13 @@ next state: 9
 CLOCKS: 62
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4726,13 +4726,13 @@ next state: 0
 CLOCKS: 63
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4801,13 +4801,13 @@ next state: 1
 CLOCKS: 64
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4876,13 +4876,13 @@ next state: 8
 CLOCKS: 65
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -4904,7 +4904,7 @@ pc_write_data: 32
 *** ULA ***
 A: 2
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -8
 ALUOut: -8
 immediate_extended: 3
@@ -4952,12 +4952,12 @@ CLOCKS: 66
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5027,12 +5027,12 @@ CLOCKS: 67
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5102,12 +5102,12 @@ CLOCKS: 68
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5177,12 +5177,12 @@ CLOCKS: 69
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5252,12 +5252,12 @@ CLOCKS: 70
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5327,12 +5327,12 @@ CLOCKS: 71
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5402,12 +5402,12 @@ CLOCKS: 72
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5429,7 +5429,7 @@ pc_write_data: 65544
 *** ULA ***
 A: 65545
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65544
 ALUOut: 65544
 immediate_extended: 12322
@@ -5477,12 +5477,12 @@ CLOCKS: 73
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5551,13 +5551,13 @@ next state: 0
 CLOCKS: 74
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5626,13 +5626,13 @@ next state: 1
 CLOCKS: 75
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5701,13 +5701,13 @@ next state: 9
 CLOCKS: 76
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5776,13 +5776,13 @@ next state: 0
 CLOCKS: 77
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5851,13 +5851,13 @@ next state: 1
 CLOCKS: 78
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5926,13 +5926,13 @@ next state: 8
 CLOCKS: 79
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -5954,7 +5954,7 @@ pc_write_data: 32
 *** ULA ***
 A: 3
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -7
 ALUOut: -7
 immediate_extended: 3
@@ -6002,12 +6002,12 @@ CLOCKS: 80
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6077,12 +6077,12 @@ CLOCKS: 81
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6152,12 +6152,12 @@ CLOCKS: 82
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6227,12 +6227,12 @@ CLOCKS: 83
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6302,12 +6302,12 @@ CLOCKS: 84
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6377,12 +6377,12 @@ CLOCKS: 85
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6452,12 +6452,12 @@ CLOCKS: 86
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6479,7 +6479,7 @@ pc_write_data: 65543
 *** ULA ***
 A: 65544
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65543
 ALUOut: 65543
 immediate_extended: 12322
@@ -6527,12 +6527,12 @@ CLOCKS: 87
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6601,13 +6601,13 @@ next state: 0
 CLOCKS: 88
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6676,13 +6676,13 @@ next state: 1
 CLOCKS: 89
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6751,13 +6751,13 @@ next state: 9
 CLOCKS: 90
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6826,13 +6826,13 @@ next state: 0
 CLOCKS: 91
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6901,13 +6901,13 @@ next state: 1
 CLOCKS: 92
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -6976,13 +6976,13 @@ next state: 8
 CLOCKS: 93
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7004,7 +7004,7 @@ pc_write_data: 32
 *** ULA ***
 A: 4
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -6
 ALUOut: -6
 immediate_extended: 3
@@ -7052,12 +7052,12 @@ CLOCKS: 94
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7127,12 +7127,12 @@ CLOCKS: 95
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7202,12 +7202,12 @@ CLOCKS: 96
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7277,12 +7277,12 @@ CLOCKS: 97
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7352,12 +7352,12 @@ CLOCKS: 98
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7427,12 +7427,12 @@ CLOCKS: 99
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7502,12 +7502,12 @@ CLOCKS: 100
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7529,7 +7529,7 @@ pc_write_data: 65542
 *** ULA ***
 A: 65543
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65542
 ALUOut: 65542
 immediate_extended: 12322
@@ -7577,12 +7577,12 @@ CLOCKS: 101
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7651,13 +7651,13 @@ next state: 0
 CLOCKS: 102
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7726,13 +7726,13 @@ next state: 1
 CLOCKS: 103
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7801,13 +7801,13 @@ next state: 9
 CLOCKS: 104
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7876,13 +7876,13 @@ next state: 0
 CLOCKS: 105
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -7951,13 +7951,13 @@ next state: 1
 CLOCKS: 106
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8026,13 +8026,13 @@ next state: 8
 CLOCKS: 107
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8054,7 +8054,7 @@ pc_write_data: 32
 *** ULA ***
 A: 5
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -5
 ALUOut: -5
 immediate_extended: 3
@@ -8102,12 +8102,12 @@ CLOCKS: 108
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8177,12 +8177,12 @@ CLOCKS: 109
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8252,12 +8252,12 @@ CLOCKS: 110
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8327,12 +8327,12 @@ CLOCKS: 111
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8402,12 +8402,12 @@ CLOCKS: 112
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8477,12 +8477,12 @@ CLOCKS: 113
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8552,12 +8552,12 @@ CLOCKS: 114
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8579,7 +8579,7 @@ pc_write_data: 65541
 *** ULA ***
 A: 65542
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65541
 ALUOut: 65541
 immediate_extended: 12322
@@ -8627,12 +8627,12 @@ CLOCKS: 115
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8701,13 +8701,13 @@ next state: 0
 CLOCKS: 116
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8776,13 +8776,13 @@ next state: 1
 CLOCKS: 117
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8851,13 +8851,13 @@ next state: 9
 CLOCKS: 118
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -8926,13 +8926,13 @@ next state: 0
 CLOCKS: 119
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9001,13 +9001,13 @@ next state: 1
 CLOCKS: 120
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9076,13 +9076,13 @@ next state: 8
 CLOCKS: 121
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9104,7 +9104,7 @@ pc_write_data: 32
 *** ULA ***
 A: 6
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -4
 ALUOut: -4
 immediate_extended: 3
@@ -9152,12 +9152,12 @@ CLOCKS: 122
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9227,12 +9227,12 @@ CLOCKS: 123
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9302,12 +9302,12 @@ CLOCKS: 124
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9377,12 +9377,12 @@ CLOCKS: 125
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9452,12 +9452,12 @@ CLOCKS: 126
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9527,12 +9527,12 @@ CLOCKS: 127
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9602,12 +9602,12 @@ CLOCKS: 128
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9629,7 +9629,7 @@ pc_write_data: 65540
 *** ULA ***
 A: 65541
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65540
 ALUOut: 65540
 immediate_extended: 12322
@@ -9677,12 +9677,12 @@ CLOCKS: 129
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9751,13 +9751,13 @@ next state: 0
 CLOCKS: 130
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9826,13 +9826,13 @@ next state: 1
 CLOCKS: 131
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9901,13 +9901,13 @@ next state: 9
 CLOCKS: 132
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -9976,13 +9976,13 @@ next state: 0
 CLOCKS: 133
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10051,13 +10051,13 @@ next state: 1
 CLOCKS: 134
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10126,13 +10126,13 @@ next state: 8
 CLOCKS: 135
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10154,7 +10154,7 @@ pc_write_data: 32
 *** ULA ***
 A: 7
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -3
 ALUOut: -3
 immediate_extended: 3
@@ -10202,12 +10202,12 @@ CLOCKS: 136
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10277,12 +10277,12 @@ CLOCKS: 137
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10352,12 +10352,12 @@ CLOCKS: 138
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10427,12 +10427,12 @@ CLOCKS: 139
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10502,12 +10502,12 @@ CLOCKS: 140
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10577,12 +10577,12 @@ CLOCKS: 141
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10652,12 +10652,12 @@ CLOCKS: 142
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10679,7 +10679,7 @@ pc_write_data: 65539
 *** ULA ***
 A: 65540
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65539
 ALUOut: 65539
 immediate_extended: 12322
@@ -10727,12 +10727,12 @@ CLOCKS: 143
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10801,13 +10801,13 @@ next state: 0
 CLOCKS: 144
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10876,13 +10876,13 @@ next state: 1
 CLOCKS: 145
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -10951,13 +10951,13 @@ next state: 9
 CLOCKS: 146
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11026,13 +11026,13 @@ next state: 0
 CLOCKS: 147
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11101,13 +11101,13 @@ next state: 1
 CLOCKS: 148
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11176,13 +11176,13 @@ next state: 8
 CLOCKS: 149
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11204,7 +11204,7 @@ pc_write_data: 32
 *** ULA ***
 A: 8
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -2
 ALUOut: -2
 immediate_extended: 3
@@ -11252,12 +11252,12 @@ CLOCKS: 150
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11327,12 +11327,12 @@ CLOCKS: 151
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11402,12 +11402,12 @@ CLOCKS: 152
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11477,12 +11477,12 @@ CLOCKS: 153
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11552,12 +11552,12 @@ CLOCKS: 154
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11627,12 +11627,12 @@ CLOCKS: 155
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11702,12 +11702,12 @@ CLOCKS: 156
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11729,7 +11729,7 @@ pc_write_data: 65538
 *** ULA ***
 A: 65539
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65538
 ALUOut: 65538
 immediate_extended: 12322
@@ -11777,12 +11777,12 @@ CLOCKS: 157
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11851,13 +11851,13 @@ next state: 0
 CLOCKS: 158
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -11926,13 +11926,13 @@ next state: 1
 CLOCKS: 159
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12001,13 +12001,13 @@ next state: 9
 CLOCKS: 160
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12076,13 +12076,13 @@ next state: 0
 CLOCKS: 161
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12151,13 +12151,13 @@ next state: 1
 CLOCKS: 162
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12226,13 +12226,13 @@ next state: 8
 CLOCKS: 163
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12254,7 +12254,7 @@ pc_write_data: 32
 *** ULA ***
 A: 9
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: -1
 ALUOut: -1
 immediate_extended: 3
@@ -12302,12 +12302,12 @@ CLOCKS: 164
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12377,12 +12377,12 @@ CLOCKS: 165
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12452,12 +12452,12 @@ CLOCKS: 166
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12527,12 +12527,12 @@ CLOCKS: 167
 
 *** IR ***
 op_code: 000000
-function: 000001
+function: 100000
 rs: 00100
-rt: 10010
+rt: 01001
 rd: 00100
-immediate: 0000010000000100
-jump_addr: 00000100000001001001000100000000
+immediate: 0010000000100000
+jump_addr: 00000000100010010010000000100000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12602,12 +12602,12 @@ CLOCKS: 168
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12677,12 +12677,12 @@ CLOCKS: 169
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12752,12 +12752,12 @@ CLOCKS: 170
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12779,7 +12779,7 @@ pc_write_data: 65537
 *** ULA ***
 A: 65538
 B: 1
-ALUInput: 011
+ALUInput: 110
 ALUResult: 65537
 ALUOut: 65537
 immediate_extended: 12322
@@ -12827,12 +12827,12 @@ CLOCKS: 171
 
 *** IR ***
 op_code: 000000
-function: 010001
-rs: 01100
-rt: 10010
-rd: 01100
-immediate: 0100010000001100
-jump_addr: 01000100000011001001001100000000
+function: 100010
+rs: 00110
+rt: 01001
+rd: 00110
+immediate: 0011000000100010
+jump_addr: 00000000110010010011000000100010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12901,13 +12901,13 @@ next state: 0
 CLOCKS: 172
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -12976,13 +12976,13 @@ next state: 1
 CLOCKS: 173
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13051,13 +13051,13 @@ next state: 9
 CLOCKS: 174
 
 *** IR ***
-op_code: 010000
-function: 001000
+op_code: 000010
+function: 000100
 rs: 00000
 rt: 00000
 rd: 00000
-immediate: 0010000000000000
-jump_addr: 00100000000000000000000000000000
+immediate: 0000000000000100
+jump_addr: 00000000000000000000000000000100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13126,13 +13126,13 @@ next state: 0
 CLOCKS: 175
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13201,13 +13201,13 @@ next state: 1
 CLOCKS: 176
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13276,13 +13276,13 @@ next state: 8
 CLOCKS: 177
 
 *** IR ***
-op_code: 001000
-function: 110000
+op_code: 000100
+function: 000011
 rs: 00100
-rt: 00010
+rt: 01000
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000001000100000000
+immediate: 0000000000000011
+jump_addr: 00000000100010000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13304,7 +13304,7 @@ pc_write_data: 32
 *** ULA ***
 A: 10
 B: 10
-ALUInput: 011
+ALUInput: 110
 ALUResult: 0
 ALUOut: 0
 immediate_extended: 3
@@ -13352,12 +13352,12 @@ CLOCKS: 178
 
 *** IR ***
 op_code: 000000
-function: 010101
+function: 101010
 rs: 00100
-rt: 00010
-rd: 00010
-immediate: 0101010000000010
-jump_addr: 01010100000000100001000100000000
+rt: 01000
+rd: 01000
+immediate: 0100000000101010
+jump_addr: 00000000100010000100000000101010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13427,12 +13427,12 @@ CLOCKS: 179
 
 *** IR ***
 op_code: 000000
-function: 010101
+function: 101010
 rs: 00100
-rt: 00010
-rd: 00010
-immediate: 0101010000000010
-jump_addr: 01010100000000100001000100000000
+rt: 01000
+rd: 01000
+immediate: 0100000000101010
+jump_addr: 00000000100010000100000000101010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13502,12 +13502,12 @@ CLOCKS: 180
 
 *** IR ***
 op_code: 000000
-function: 010101
+function: 101010
 rs: 00100
-rt: 00010
-rd: 00010
-immediate: 0101010000000010
-jump_addr: 01010100000000100001000100000000
+rt: 01000
+rd: 01000
+immediate: 0100000000101010
+jump_addr: 00000000100010000100000000101010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 10	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13577,12 +13577,12 @@ CLOCKS: 181
 
 *** IR ***
 op_code: 000000
-function: 010101
+function: 101010
 rs: 00100
-rt: 00010
-rd: 00010
-immediate: 0101010000000010
-jump_addr: 01010100000000100001000100000000
+rt: 01000
+rd: 01000
+immediate: 0100000000101010
+jump_addr: 00000000100010000100000000101010
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13651,13 +13651,13 @@ next state: 0
 CLOCKS: 182
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 01100
-rt: 11100
+op_code: 001000
+function: 000001
+rs: 00110
+rt: 00111
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001110001100000000
+immediate: 0000000000000001
+jump_addr: 00000000110001110000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13726,13 +13726,13 @@ next state: 1
 CLOCKS: 183
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 01100
-rt: 11100
+op_code: 001000
+function: 000001
+rs: 00110
+rt: 00111
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001110001100000000
+immediate: 0000000000000001
+jump_addr: 00000000110001110000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13801,13 +13801,13 @@ next state: 12
 CLOCKS: 184
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 01100
-rt: 11100
+op_code: 001000
+function: 000001
+rs: 00110
+rt: 00111
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001110001100000000
+immediate: 0000000000000001
+jump_addr: 00000000110001110000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13876,13 +13876,13 @@ next state: 13
 CLOCKS: 185
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 01100
-rt: 11100
+op_code: 001000
+function: 000001
+rs: 00110
+rt: 00111
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000001110001100000000
+immediate: 0000000000000001
+jump_addr: 00000000110001110000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -13952,12 +13952,12 @@ CLOCKS: 186
 
 *** IR ***
 op_code: 000000
-function: 101001
-rs: 11100
+function: 100101
+rs: 00111
 rt: 00000
-rd: 11010
-immediate: 1010010000011010
-jump_addr: 10100100000110100000011100000000
+rd: 01011
+immediate: 0101100000100101
+jump_addr: 00000000111000000101100000100101
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14027,12 +14027,12 @@ CLOCKS: 187
 
 *** IR ***
 op_code: 000000
-function: 101001
-rs: 11100
+function: 100101
+rs: 00111
 rt: 00000
-rd: 11010
-immediate: 1010010000011010
-jump_addr: 10100100000110100000011100000000
+rd: 01011
+immediate: 0101100000100101
+jump_addr: 00000000111000000101100000100101
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14102,12 +14102,12 @@ CLOCKS: 188
 
 *** IR ***
 op_code: 000000
-function: 101001
-rs: 11100
+function: 100101
+rs: 00111
 rt: 00000
-rd: 11010
-immediate: 1010010000011010
-jump_addr: 10100100000110100000011100000000
+rd: 01011
+immediate: 0101100000100101
+jump_addr: 00000000111000000101100000100101
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14129,7 +14129,7 @@ pc_write_data: 90304
 *** ULA ***
 A: 65538
 B: 0
-ALUInput: 100
+ALUInput: 001
 ALUResult: 90304
 ALUOut: 90304
 immediate_extended: 22565
@@ -14177,12 +14177,12 @@ CLOCKS: 189
 
 *** IR ***
 op_code: 000000
-function: 101001
-rs: 11100
+function: 100101
+rs: 00111
 rt: 00000
-rd: 11010
-immediate: 1010010000011010
-jump_addr: 10100100000110100000011100000000
+rd: 01011
+immediate: 0101100000100101
+jump_addr: 00000000111000000101100000100101
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14251,13 +14251,13 @@ next state: 0
 CLOCKS: 190
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 11100
-rt: 00110
+op_code: 001000
+function: 000001
+rs: 00111
+rt: 01100
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000000011011100000000
+immediate: 0000000000000001
+jump_addr: 00000000111011000000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14326,13 +14326,13 @@ next state: 1
 CLOCKS: 191
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 11100
-rt: 00110
+op_code: 001000
+function: 000001
+rs: 00111
+rt: 01100
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000000011011100000000
+immediate: 0000000000000001
+jump_addr: 00000000111011000000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14401,13 +14401,13 @@ next state: 12
 CLOCKS: 192
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 11100
-rt: 00110
+op_code: 001000
+function: 000001
+rs: 00111
+rt: 01100
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000000011011100000000
+immediate: 0000000000000001
+jump_addr: 00000000111011000000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14476,13 +14476,13 @@ next state: 13
 CLOCKS: 193
 
 *** IR ***
-op_code: 000100
-function: 100000
-rs: 11100
-rt: 00110
+op_code: 001000
+function: 000001
+rs: 00111
+rt: 01100
 rd: 00000
-immediate: 1000000000000000
-jump_addr: 10000000000000000011011100000000
+immediate: 0000000000000001
+jump_addr: 00000000111011000000000000000001
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14552,12 +14552,12 @@ CLOCKS: 194
 
 *** IR ***
 op_code: 000000
-function: 001001
-rs: 00110
-rt: 10100
-rd: 00110
-immediate: 0010010000000110
-jump_addr: 00100100000001101010000110000000
+function: 100100
+rs: 01100
+rt: 00101
+rd: 01100
+immediate: 0110000000100100
+jump_addr: 00000001100001010110000000100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14627,12 +14627,12 @@ CLOCKS: 195
 
 *** IR ***
 op_code: 000000
-function: 001001
-rs: 00110
-rt: 10100
-rd: 00110
-immediate: 0010010000000110
-jump_addr: 00100100000001101010000110000000
+function: 100100
+rs: 01100
+rt: 00101
+rd: 01100
+immediate: 0110000000100100
+jump_addr: 00000001100001010110000000100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14702,12 +14702,12 @@ CLOCKS: 196
 
 *** IR ***
 op_code: 000000
-function: 001001
-rs: 00110
-rt: 10100
-rd: 00110
-immediate: 0010010000000110
-jump_addr: 00100100000001101010000110000000
+function: 100100
+rs: 01100
+rt: 00101
+rd: 01100
+immediate: 0110000000100100
+jump_addr: 00000001100001010110000000100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14777,12 +14777,12 @@ CLOCKS: 197
 
 *** IR ***
 op_code: 000000
-function: 001001
-rs: 00110
-rt: 10100
-rd: 00110
-immediate: 0010010000000110
-jump_addr: 00100100000001101010000110000000
+function: 100100
+rs: 01100
+rt: 00101
+rd: 01100
+immediate: 0110000000100100
+jump_addr: 00000001100001010110000000100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14851,13 +14851,13 @@ next state: 0
 CLOCKS: 198
 
 *** IR ***
-op_code: 101000
-function: 110000
-rs: 00110
-rt: 00110
+op_code: 000101
+function: 000011
+rs: 01100
+rt: 01100
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000011000110000000
+immediate: 0000000000000011
+jump_addr: 00000001100011000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -14926,13 +14926,13 @@ next state: 1
 CLOCKS: 199
 
 *** IR ***
-op_code: 101000
-function: 110000
-rs: 00110
-rt: 00110
+op_code: 000101
+function: 000011
+rs: 01100
+rt: 01100
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000011000110000000
+immediate: 0000000000000011
+jump_addr: 00000001100011000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -15001,13 +15001,13 @@ next state: 14
 CLOCKS: 200
 
 *** IR ***
-op_code: 101000
-function: 110000
-rs: 00110
-rt: 00110
+op_code: 000101
+function: 000011
+rs: 01100
+rt: 01100
 rd: 00000
-immediate: 1100000000000000
-jump_addr: 11000000000000000011000110000000
+immediate: 0000000000000011
+jump_addr: 00000001100011000000000000000011
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -15029,7 +15029,7 @@ pc_write_data: 68
 *** ULA ***
 A: 3
 B: 3
-ALUInput: 011
+ALUInput: 110
 ALUResult: 0
 ALUOut: 0
 immediate_extended: 3
@@ -15076,13 +15076,13 @@ next state: 0
 CLOCKS: 201
 
 *** IR ***
-op_code: 000100
-function: 001001
+op_code: 001000
+function: 100100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010011000000000
-jump_addr: 00100110000000000001100000000000
+immediate: 0000000001100100
+jump_addr: 00000000000110000000000001100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -15151,13 +15151,13 @@ next state: 1
 CLOCKS: 202
 
 *** IR ***
-op_code: 000100
-function: 001001
+op_code: 001000
+function: 100100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010011000000000
-jump_addr: 00100110000000000001100000000000
+immediate: 0000000001100100
+jump_addr: 00000000000110000000000001100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -15226,13 +15226,13 @@ next state: 12
 CLOCKS: 203
 
 *** IR ***
-op_code: 000100
-function: 001001
+op_code: 001000
+function: 100100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010011000000000
-jump_addr: 00100110000000000001100000000000
+immediate: 0000000001100100
+jump_addr: 00000000000110000000000001100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 4	
@@ -15301,13 +15301,13 @@ next state: 13
 CLOCKS: 204
 
 *** IR ***
-op_code: 000100
-function: 001001
+op_code: 001000
+function: 100100
 rs: 00000
-rt: 00011
+rt: 11000
 rd: 00000
-immediate: 0010011000000000
-jump_addr: 00100110000000000001100000000000
+immediate: 0000000001100100
+jump_addr: 00000000000110000000000001100100
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15376,13 +15376,13 @@ next state: 0
 CLOCKS: 205
 
 *** IR ***
-op_code: 110101
+op_code: 101011
 function: 000000
-rs: 00011
+rs: 11000
 rt: 01010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000101000011000000
+jump_addr: 00000011000010100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15451,13 +15451,13 @@ next state: 1
 CLOCKS: 206
 
 *** IR ***
-op_code: 110101
+op_code: 101011
 function: 000000
-rs: 00011
+rs: 11000
 rt: 01010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000101000011000000
+jump_addr: 00000011000010100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15526,13 +15526,13 @@ next state: 2
 CLOCKS: 207
 
 *** IR ***
-op_code: 110101
+op_code: 101011
 function: 000000
-rs: 00011
+rs: 11000
 rt: 01010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000101000011000000
+jump_addr: 00000011000010100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15601,13 +15601,13 @@ next state: 5
 CLOCKS: 208
 
 *** IR ***
-op_code: 110101
+op_code: 101011
 function: 000000
-rs: 00011
+rs: 11000
 rt: 01010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000101000011000000
+jump_addr: 00000011000010100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15676,13 +15676,13 @@ next state: 0
 CLOCKS: 209
 
 *** IR ***
-op_code: 110001
+op_code: 100011
 function: 000000
-rs: 00011
-rt: 01001
+rs: 11000
+rt: 10010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000100100011000000
+jump_addr: 00000011000100100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15751,13 +15751,13 @@ next state: 1
 CLOCKS: 210
 
 *** IR ***
-op_code: 110001
+op_code: 100011
 function: 000000
-rs: 00011
-rt: 01001
+rs: 11000
+rt: 10010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000100100011000000
+jump_addr: 00000011000100100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15826,13 +15826,13 @@ next state: 2
 CLOCKS: 211
 
 *** IR ***
-op_code: 110001
+op_code: 100011
 function: 000000
-rs: 00011
-rt: 01001
+rs: 11000
+rt: 10010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000100100011000000
+jump_addr: 00000011000100100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15901,13 +15901,13 @@ next state: 3
 CLOCKS: 212
 
 *** IR ***
-op_code: 110001
+op_code: 100011
 function: 000000
-rs: 00011
-rt: 01001
+rs: 11000
+rt: 10010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000100100011000000
+jump_addr: 00000011000100100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -15976,13 +15976,13 @@ next state: 4
 CLOCKS: 213
 
 *** IR ***
-op_code: 110001
+op_code: 100011
 function: 000000
-rs: 00011
-rt: 01001
+rs: 11000
+rt: 10010
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000100100011000000
+jump_addr: 00000011000100100000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -16051,13 +16051,13 @@ next state: 0
 CLOCKS: 214
 
 *** IR ***
-op_code: 001010
+op_code: 010100
 function: 000000
 rs: 11111
 rt: 00000
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000000011111000000
+jump_addr: 00000011111000000000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -16126,13 +16126,13 @@ next state: 1
 CLOCKS: 215
 
 *** IR ***
-op_code: 001010
+op_code: 010100
 function: 000000
 rs: 11111
 rt: 00000
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000000011111000000
+jump_addr: 00000011111000000000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -16201,13 +16201,13 @@ next state: 10
 CLOCKS: 216
 
 *** IR ***
-op_code: 001010
+op_code: 010100
 function: 000000
 rs: 11111
 rt: 00000
 rd: 00000
 immediate: 0000000000000000
-jump_addr: 00000000000000000000011111000000
+jump_addr: 00000011111000000000000000000000
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -16282,7 +16282,7 @@ rs: 11111
 rt: 11111
 rd: 11111
 immediate: 1111111111111111
-jump_addr: 11111111111111111111111111000000
+jump_addr: 00000011111111111111111111111111
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
@@ -16357,7 +16357,7 @@ rs: 11111
 rt: 11111
 rd: 11111
 immediate: 1111111111111111
-jump_addr: 11111111111111111111111111000000
+jump_addr: 00000011111111111111111111111111
 
 *** REGISTRADORES ***
 R00 ($zero) = 0	R08 ($t0) = 0	R16 ($s0) = 0	R24 ($t8) = 100	
