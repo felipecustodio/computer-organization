@@ -75,7 +75,7 @@ int last_valid = 0; // posição da última instrução válida do programa
  *   Retorna valor decimal convertido de um binário
  *
  *   bit* binary: string que representa o binário
- *   int size: tamanho desse binário
+ *   int size: quantidade de bits desse binário
  *
  */
  int bin2dec(bit* binary, int size) {
@@ -143,7 +143,7 @@ bit rs[5];
 bit rt[5];
 bit rd[5];
 bit immediate[16];
-//jump_addr começará com 26 bits quando sair do IR
+//jump_addr armazenará 26 bits quando sair do IR
 bit jump_addr[32];
 
 // +------------------------+
@@ -185,7 +185,7 @@ reg ra;     // 31
 
 reg MAR;    // memory address register
 reg IR;     // instruction register
-reg MDR;    // memory buffer register
+reg MDR;    // memory data register
 
 word reg_write_data; // conteúdo a ser escrito em um registrador
 reg* write_reg; // ponteiro para o registrador que receberá write data
@@ -198,13 +198,12 @@ word pc_write_data; // saida do mux_pc
 // +----------------------------------+
 
 /*
- * funcao
+ * get_register
  * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
+ *   Retorna um ponteiro para um registrador do
+ *   banco de registradores com base em seu número
  *
- *   argumento1:
- *   argumento2:
+ *   int id: valor identificador do registrador
  *
  */
 reg* get_register(int id) {
@@ -480,11 +479,11 @@ bit next_state[5];
 
 
 /*
- * FUNCAO QUE SIMULA O MUX QUE FARÁ O ACESSO A MEMORIA
+ * FUNÇÃO QUE SIMULA O MUX QUE FARÁ O ACESSO A MEMÓRIA
  * ----------------------------
  *   O que ela faz:
- *          RECEBE: SINAL DE CONTROLE IORD
- *          SAIDAL: ALTERA O VALOR DE MAR
+ *          SINAL DE CONTROLE: IorD
+ *          RESULTADO: ALTERA O VALOR DE MAR
 */
 void MUX_MEMORY() {
 	switch (IorD) {
@@ -499,11 +498,11 @@ void MUX_MEMORY() {
 
 
 /*
- * FUNCAO QUE SIMULA O FUNCIONAMENTO DE PC
+ * FUNÇÃO QUE SIMULA A ESCRITA EM PC, SE NECESSÁRIO
  * ----------------------------
  *   O que ela faz:
- *          RECEBE: SINAL DE CONTROLE PCCONTROL
- *          SAIDA: ATUALIZA O VALOR DE PC
+ *          SINAL DE CONTROLE: PCControl
+ *          RESULTADO: ALTERA O VALOR DE PC
  *
  */
 void PROGRAM_COUNTER() {
@@ -514,11 +513,11 @@ void PROGRAM_COUNTER() {
 
 
 /*
- * FUNCAO QUE SIMULA O BANCO DE MEMORIA
+ * FUNCAO QUE SIMULA A LEITURA E ESCRITA NA MEMÓRIA
  * ----------------------------
  *   O que ela faz:
- *          RECEBE: BITS DE CONTROLE MEMREAD E MEMREG
- *          SAIDA: OPERACAO DE LEITURA OU ESCRITA NA MEMORIA
+ *          SINAL DE CONTROLE: MemRead, MemWrite
+ *          RESULTADO: LÊ DA MEMÓRIA OU ESCREVE NA MEMÓRIA
  */
 void MEMORY_BANK() {
 	if (MemRead) {
@@ -538,16 +537,17 @@ void MEMORY_BANK() {
 }
 
 
-/**
- * FUNCAO QUE SIMULA A SELECAO DO REGISTRADOR QUE TERA SEU VALOR ALTERADO
- * SINAL DE CONTROLE: REGDEST0 E REGDEST1
- * 0 - PEGA O VALOR DE INSTRUCTION[20 .. 16]
- * 1 - PEGA O VALOR DE INSTRUCTION[15 .. 11]
- * 2 - PEGA O VALOR 31 (NUMÉRICO)
- * 3 - NÃO EXISTE
- * SAIDA: PARA WRITE REGISTER (REGISTERS)
+/*
+ * FUNÇÃO QUE SIMULA O MUX QUE SELECIONA EM QUAL REGISTRADOR
+ * OCORRERÁ A ESCRITA NO BANCO DE REGISTRADORES
+ * ----------------------------
+ *   O que ela faz:
+ *          SINAL DE CONTROLE: RegDst (2 bits)
+ * 				0 - PEGA O VALOR DE INSTRUCTION[20 .. 16] (RT)
+ * 				1 - PEGA O VALOR DE INSTRUCTION[15 .. 11] (RD)
+ * 				2 - PEGA O VALOR 31 (ID DO REGISTRADOR $ra)
+ *          RESULTADO: O REGISTRADOR PARA ESCRITA É SELECIONADO
  */
-
 void MUX_WRITE_REG() {
 	int i;
   switch (RegDst1) {
@@ -572,21 +572,17 @@ void MUX_WRITE_REG() {
 
 
 /**
- * FUNCAO QUE SIMULA O MUX RESPONSAVEL PELA SELECAO DO VALOR PARA SER ESCRITO EM UM REGISTRADOR
- * SINAL DE CONTROLE: MEMTOREG0 E MEMTOREG1
- * 0 - PEGA O VALOR DE ALUOUT
- * 1 - PEGA O VALOR DE MEM_DATA_REGISTER
- * 2 - PEGA O VALOR DE PC
- * 3 - NÃO EXISTE
- * SAIDA: PARA WRITE DATA (REGISTERS)
+ * FUNÇÃO QUE SIMULA O MUX RESPONSÁVEL PELA SELEÇÃO DO VALOR A SER ESCRITO NO BANCO DE REGISTRADORES
+ * ----------------------------
+ *   O que ela faz:
+ * 			SINAL DE CONTROLE: MemtoReg (2 bits)
+ * 				0 - PEGA O VALOR DE ALUOut
+ * 				1 - PEGA O VALOR DE MDR
+ * 				2 - PEGA O VALOR DE PC
+ * 			RESULTADO: O DADO A SER ESCRITO ESTÁ SELECIONADO
  */
 void MUX_WRITE_DATA() {
     int i;
-    // MEMTOREG
-    // 00 - ALUOut
-    // 01 - MDR
-    // 10 - PC
-    // ANALISE SEPARA DOS DOIS BITS DE CONTROLE
     switch (MemtoReg1) {
         case 0:
             switch (MemtoReg0) {
@@ -613,11 +609,13 @@ void MUX_WRITE_DATA() {
 
 
 /**
- * FUNCAO QUE SIMULA O MUX QUE SELECIONA O QUE SERA ENVIADO PARA A PRIMEIRA ENTRADA DA ULA
- * SINAL DE CONTROLE: ALUSRCA
- * 0 - PEGA O VALOR DE PC
- * 1 - PEGA O VALOR DE A (READ DATA 1 - REGISTERS)
- * SAIDA: ENTRADA 1 DA ALU
+ * FUNÇÃO QUE SIMULA O MUX QUE SELECIONA O PRIMEIRO OPERANDO DA ULA
+ * ----------------------------
+ *   O que ela faz:
+ * 			SINAL DE CONTROLE: ALUSrcA
+ * 				0 - PEGA O VALOR DE PC
+ * 				1 - PEGA O VALOR DO REGISTRADOR A
+ * 			RESULTADO: O PRIMEIRO OPERANDO DA ULA ESTÁ SELECIONADO
  */
 void MUX_ALU_1() {
 	switch (ALUSrcA) {
@@ -634,16 +632,17 @@ void MUX_ALU_1() {
 
 
 /**
- * FUNCAO QUE SIMULA O MUX QUE SELECIONA O QUE SERA ENVIADO PARA A SEGUNDA ENTRADA DA ULA
- * SINAL DE CONTROLE: ALUSRCB0 E ALUSRCB1
- * 0 - PEGA O VALOR DE B (READ DATA 2 - REGISTERS)
- * 1 - PEGA O VALOR 4 (NÚMERO)
- * 2 - PEGA O VALOR DE INSTRUCTION[15 .. 0] (DEPOIS DE SIGNAL_EXTEND_16_TO_32)
- * 3 - PEGA O VALOR DE INSTRUCTION[15 .. 0] (DEPOIS DE SIGNAL_EXTEND_16_TO_32 E SHIFT_LEFT_2_MUX_ALU_2)
- * SAIDA: ENTRADA 2 DA ALU
+ * FUNÇÃO QUE SIMULA O MUX QUE SELECIONA O SEGUNDO OPERANDO DA ULA
+ * ----------------------------
+ *   O que ela faz:
+ * 			SINAL DE CONTROLE: ALUSrcB (2 bits)
+ * 				0 - PEGA O VALOR DO REGISTRADOR B 
+ * 				1 - PEGA O VALOR 4 (USADO PARA INCREMENTAR O PC PARA A PRÓXIMA POSIÇÃO DA MEMÓRIA)
+ *				2 - PEGA O VALOR IMEDIATO DE INSTRUCTION[15 .. 0] (DEPOIS DA EXTENSÃO DE SINAL)
+ * 				3 - PEGA O VALOR IMEDIATO DE INSTRUCTION[15 .. 0] (DEPOIS DA EXTENSÃO DE SINAL E DO SHIFT LEFT 2)
+ * 			RESULTADO: O SEGUNDO OPERANDO DA ULA ESTÁ SELECIONADO
  */
 void MUX_ALU_2() {
-    //ANALISE COM BASE NOS DOIS BITS DE CONTROLE ALUSRCB
   switch (ALUSrcB1) {
 	  case 0:
 			switch (ALUSrcB0) {
@@ -674,17 +673,19 @@ void MUX_ALU_2() {
 
 
 /**
- * FUNCAO QUE SIMULA O FUNCIONAMENTO DO MUX QUE SELECIONA O QUE SERA ESCRITO EM PC
- * SINAL DE CONTROLE: PCSORCE0 E PCSOURCE1
- * 0 - PEGA O VALOR DE RESULTADO DA ULA
- * 1 - PEGA O VALOR DE ALUOUT
- * 2 - PEGA O VALOR DE PC SHIFT 2 LEFT
- * 3 - PEGA O VALOR DE A (REGISTRADORES)
- * SAIDA: PARA PC
+ * FUNÇÃO QUE SIMULA O MUX QUE SELECIONA O QUE SERÁ ESCRITO EM PC
+ * ----------------------------
+ *   O que ela faz:
+ * 			SINAL DE CONTROLE: PCSource
+ * 				0 - PEGA O RESULTADO DA ULA
+ * 				1 - PEGA O VALOR DE ALUOUT
+ * 				2 - PEGA OS 4 PRIMEIROS BITS DE PC CONCATENADOS
+ *					COM O VALOR IMEDIATO jump_addr SHIFTADO 2 À ESQUERDA
+ * 				3 - PEGA O VALOR DO REGISTRADOR A
+ * 			RESULTADO: O VALOR A SER ESCRITO EM PC ESTÁ SELECIONADO
  */
 void MUX_PC() {
 	int i;
-    // FAZENDO A ANALISE DOS DOIS BITS DE CONTROLE
 	switch (PCSource1) {
 		case 0:
 			switch (PCSource0) {
@@ -718,11 +719,15 @@ void MUX_PC() {
 
 
 /*
- * FUNCAO QUE SIMULA O FUNCIONAMENTO DO MUX ADICIONADO RESPONSAVEL PELO BNE
+ * FUNÇÃO QUE SIMULA O MUX ADICIONADO PARA O BNE
  * ----------------------------
  *   O que ela faz:
- *          RECEBE: SAIDAS ZERO DA ULA
- *          SAIDA: PERMITE ALTERAR PC PASSANDO POR UMA PORTA AND E OR
+ *          SINAL DE CONTROLE: BNE
+ * 				0 - A ESCRITA EM PC SERÁ HABILITADA CASO O RESULTADO DA ULA SEJA 0
+ *					E PCWriteCond ESTIVER HABILITADO OU SE PCWrite ESTIVER HABILITADO
+ * 				1 - A ESCRITA EM PC SERÁ HABILITADA CASO O RESULTADO DA ULA NÃO SEJA 0
+ *					E PCWriteCond ESTIVER HABILITADO OU SE PCWrite ESTIVER HABILITADO
+ * 			RESULTADO: A ESCRITA EM PC SERÁ HABILITADO SE A CONDIÇÃO SELECIONADA FOR SATISFEITA
  *
  */
 void MUX_BNE() {
@@ -738,46 +743,43 @@ void MUX_BNE() {
 
 
 /*
- * FUNCAO AUXILIAR PARA SETAR VALORES DO IR
+ * FUNÇÃO AUXILIAR PARA OBTER OS VALORES DE IR
  * ----------------------------
  *   O que ela faz:
- *      UTILIZANDO O VALOR DE IR BIT A BIT, SETA OS VALORES
- *      QUE SAEM NOS BARRAMENTOS IR.
+ *      	SEPARA OS BITS DO VALOR DE IR EM VÁRIOS FIOS
  */
 void IR_SET() {
 	int i;
 
-	if (IRWrite) {
-		for (i = 0; i < 6; i++) {
-			op_code[i] = GETBIT(IR, 26+i);
-			function[i] = GETBIT(IR, i);
-		}
+	for (i = 0; i < 6; i++) {
+		op_code[i] = GETBIT(IR, 26+i);
+		function[i] = GETBIT(IR, i);
+	}
 
-		for (i = 0; i < 5; i++) {
-			rs[i] = GETBIT(IR, 21+i);
-			rt[i] = GETBIT(IR, 16+i);
-			rd[i] = GETBIT(IR, 11+i);
-		}
+	for (i = 0; i < 5; i++) {
+		rs[i] = GETBIT(IR, 21+i);
+		rt[i] = GETBIT(IR, 16+i);
+		rd[i] = GETBIT(IR, 11+i);
+	}
 
-		for (i = 0; i < 16; i++) {
-			immediate[i] = GETBIT(IR, i);
-		}
+	for (i = 0; i < 16; i++) {
+		immediate[i] = GETBIT(IR, i);
+	}
 
-		for (i = 0; i < 26; i++) {
-			jump_addr[i] = GETBIT(IR, i);
-		}
+	for (i = 0; i < 26; i++) {
+		jump_addr[i] = GETBIT(IR, i);
 	}
 }
 
 
 /*
- * FUNCAO QUE REPRESENTA O FUNCIONAMENTO DO BANCO DE REGISTRADORES
+ * FUNÇÃO QUE REPRESENTA A LEITURA E ESCRITA DO BANCO DE REGISTRADORES
  * ----------------------------
  *   O que ela faz:
- *          ATUALIZA OS VALORES DE A E B PARA QUEPOSSAM SER UTILIZADOS PRINCIPALMENTE
- *          NA ULA.
- *          ANALISA O REGWRITE PARA SABER QUANTO SEVE SER ESCRITO UM VALOR NO BANCO DE
- *          REGISTRADORES
+ *			SINAL DE CONTROLE: RegWrite
+ *			RESULTADO: O REGISTRADOR A RECEBE O VALOR DO REGISTRADOR APONTADO POR RS
+ *					   O REGISTRADOR B RECEBE O VALOR DO REGISTRADOR APONTADO POR RT
+ 					   SE RegWrite ESTIVER HABILITADO, OCORRERÁ A ESCRITA NO BANCO DE REGISTRADORES
  *
  */
 void REGISTER_BANK() {
@@ -792,11 +794,11 @@ void REGISTER_BANK() {
 
 
 /*
- * EXTENSAO DE SINAL DE 16 BITS PARA 32 BITS
+ * EXTENSÃO DE SINAL DE 16 BITS PARA 32 BITS
  * ----------------------------
  *   O que ela faz:
- *          RECEBE O VALOR DE INSTRUCTION [15 .. 0] COM 16 BITS E MANDA PARA O MUX
- *          DA ENTRADA B DA ULA, O VALOR COM EXTENSAO DE SINAL PARA 32 BITS
+ *          RECEBE O VALOR IMEDIATO DE INSTRUCTION [15 .. 0] COM 16 BITS E MANDA PARA O MUX
+ *          DA ENTRADA B DA ULA O MESMO VALOR APÓS A EXTENSÃO DE SINAL, COM 32 BITS
  *
  */
 void SIGNAL_EXTEND_16_TO_32() {
@@ -805,12 +807,11 @@ void SIGNAL_EXTEND_16_TO_32() {
 
 
 /*
- *  FUNCAO QUE SIMULA O CONTROLE DA ULA FEITO PELA UNIDADE ALU CONTROL
+ *  FUNÇÃO QUE SIMULA O CONTROLE DA ULA FEITO PELA UNIDADE ALU CONTROL
  * ----------------------------
  *   O que ela faz:
- *          RECEBE: SINAL ALUOP QUE POSSUI DOIS BITS DE CONTROLE
- *                  INSTRUCTION[5 ..0] PARA QUE SEJA ANALISADO QUAL OPERACAO DEVE SER FEITA
- *          ENVIA: PARA A ULA A INTRUCAO DE QUAL OPERACAO DEVE SER REALIZADA
+ *          SINAL DE CONTROLE: ALUOp, INSTRUCTION[5 ..0]
+ *          RESULTADO: ENVIA PARA A ULA A INTRUÇÃO DE QUAL OPERAÇÃO DEVE SER REALIZADA
  *
  */
 void ALU_CONTROL() {
@@ -869,13 +870,11 @@ void ALU_CONTROL() {
 
 
 /*
- * FUNCAO QUE SIMULA UMA ULA COM OPERACOES ARITMETICAS PRE DETERMINADAS
+ * FUNÇÃO QUE SIMULA UMA ULA QUE REALIZA OPERAÇÕES COM DOIS OPERANDOS
  * ----------------------------
  *   O que ela faz:
- *          RECEBE: VALORES DE MUX_ALU_1 E MUX_ALU_2 QUE POR SUA VEZ PODEM OBTER OS VALORES
- *                       DE DIFERENTES LOCAIS
- *          SAIDA: RESULTADO DAS OPERACOES COM BASE NA OPERACAO DEFINIDA POR ALU CONTROL
- *                 BIT ADICIONAL PARA INDICAR CASO A OPERACAO TENHA DADO ZERO OU NAO
+ *          SINAL DE CONTROLE: ALUInput
+ *          RESULTADO: O RESULTADO DAS OPERAÇÕES FICA DISPONÍVEL NO FIO ALUResult
  *
  */
 void ALU() {
@@ -903,11 +902,11 @@ void ALU() {
 
 
 /*
- * FUNCAO QUE ARMAZENA A SAIDA DA ULA
+ * FUNÇÃO QUE ESCEVE A SAÍDA DA ULA NO REGISTRADOR ALUOut
  * ----------------------------
  *   O que ela faz:
- *        ARMAZENA O VALOR DE SAIDA DA ULA, PARA QUE POSSA SER USADA EM
- *        OUTROS CICLOS
+ * 			ESCREVE O VALOR PRESENTE NO FIO DE SAÍDA DA ULA NO
+ *			REGISTRADOR ALUOut
  *
  */
 void ALU_OUT() {
