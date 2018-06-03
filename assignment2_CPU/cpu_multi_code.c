@@ -636,7 +636,7 @@ void MUX_ALU_1() {
  * ----------------------------
  *   O que ela faz:
  * 			SINAL DE CONTROLE: ALUSrcB (2 bits)
- * 				0 - PEGA O VALOR DO REGISTRADOR B 
+ * 				0 - PEGA O VALOR DO REGISTRADOR B
  * 				1 - PEGA O VALOR 4 (USADO PARA INCREMENTAR O PC PARA A PRÓXIMA POSIÇÃO DA MEMÓRIA)
  *				2 - PEGA O VALOR IMEDIATO DE INSTRUCTION[15 .. 0] (DEPOIS DA EXTENSÃO DE SINAL)
  * 				3 - PEGA O VALOR IMEDIATO DE INSTRUCTION[15 .. 0] (DEPOIS DA EXTENSÃO DE SINAL E DO SHIFT LEFT 2)
@@ -1180,13 +1180,11 @@ void start() {
 }
 
 /*
- * funcao
+ * finalize
  * ----------------------------
- *   O que ela faz:
- *          * X recebe Y
- *
- *   argumento1:
- *   argumento2:
+ *   Checa o estado da saída para exibir
+ *   a mensagem correta e exibe na tela o
+ *   conteúdo dos registradores e da memória.
  *
  */
 void finalize() {
@@ -1261,6 +1259,7 @@ void set() {
     MUX_WRITE_DATA();
     MUX_PC();
 }
+
 /*
  * FUNCAO QUE SIMULA O FUNCIONAMENTO DE TODOS OS COMPONENTES DE ACORDO COM O CLOCK
  * ----------------------------
@@ -1274,8 +1273,6 @@ void go() {
     CONTROL();
     clocks++;
 }
-
-/*******************************************************/
 
 
 /*
@@ -1312,10 +1309,6 @@ int check_status() {
     // if () {
     //     status = STATUS_INVALID_ALU;
     // }
-
-	// checar se PC vai passar da ultima linha
-    //	if (PC > posiçao ultima instrucao) {
-    //			status = STATUS_INVALID_INSTR;
 
     // checar acesso ao banco de registradores
 	//
@@ -1501,7 +1494,6 @@ int main(int argc, char const *argv[]) {
 	// inicializar sinais de controle
 	start();
 
-    // teste com 3 clocks (comparar com saída do PDF)
     debugger(); // mostrar estado inicial
 
     // i = 0;
@@ -1520,6 +1512,9 @@ int main(int argc, char const *argv[]) {
     system("clear");
     char buffer = 10;
     while (buffer == 10) {
+        if (check_status()) {
+            break;
+        }
         printf("CLOCK ATUAL: %d\n", clocks);
         finalize();
         printf("continuar? ");
@@ -1529,6 +1524,7 @@ int main(int argc, char const *argv[]) {
         debugger();
         system("clear");
     }
+    system("clear");
 
     // finalizar execução e exibir informações na tela
     finalize();
