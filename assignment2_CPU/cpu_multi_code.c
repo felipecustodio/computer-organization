@@ -202,6 +202,8 @@ reg* write_reg; // ponteiro para o registrador que receberá write data
 reg PC;             // program counter
 word pc_write_data; // saida do mux_pc
 
+word ir_data; // conteúdo que chega no IR
+
 // +----------------------------------+
 // | FUNÇÕES - BANCO DE REGISTRADORES |
 // +----------------------------------+
@@ -533,8 +535,8 @@ void MEMORY_BANK() {
         memory_word_pointer = (word*)(&(MEMORY[MAR]));
 		// MDR = MEMORY[MAR];
         MDR = (*memory_word_pointer);
-		// IR = MEMORY[MAR];
-        IR = (*memory_word_pointer);
+		// Fio que vai p/ IR = MEMORY[MAR];
+        ir_data = (*memory_word_pointer);
 	}
 
 	if (MemWrite) {
@@ -778,6 +780,25 @@ void IR_SET() {
 	for (i = 0; i < 26; i++) {
 		jump_addr[i] = GETBIT(IR, i);
 	}
+}
+
+
+/*
+ * FUNÇÃO QUE SIMULA O IR
+ * ----------------------------
+ *   O que ela faz:
+ *      Quando IRWrite está habilitado,
+ *      o conteúdo que saiu de MEMORY_BANK é
+ *      escrito no IR e então separado nos valores
+ *      corretos por IR_SET.
+ *
+ */
+void IR_UNIT() {
+    if (IRWrite) {
+        IR = ir_data;
+        IR_SET();
+    }
+
 }
 
 
@@ -1189,7 +1210,7 @@ void start() {
 	MemRead     = 1;
 	MemWrite    = 0;
 	BNE         = 0;
-	IRWrite     = 0;
+	IRWrite     = 1;
 	MemtoReg0   = 0;
 	MemtoReg1   = 0;
 
@@ -1268,6 +1289,9 @@ void finalize() {
  * ----------------------------
  */
 void set() {
+    CONTROL();
+    CONTROL_NEXT();
+
     MUX_MEMORY();
     SIGNAL_EXTEND_16_TO_32();
     MUX_ALU_1();
@@ -1285,13 +1309,14 @@ void set() {
  * ----------------------------
  */
 void go() {
-    CONTROL();
+    // CONTROL();
+    // CONTROL_NEXT();
     MEMORY_BANK();
-    IR_SET();
+    IR_UNIT();
     PROGRAM_COUNTER();
     ALU_OUT();
     REGISTER_BANK();
-    CONTROL_NEXT();
+    // CONTROL_NEXT();
     clocks++;
 }
 
@@ -1346,6 +1371,7 @@ int check_status() {
         status = STATUS_INFINITE;
     }
 
+    return status;
 }
 
 
@@ -1490,6 +1516,55 @@ void debugger() {
     fprintf(f_debug, "\n");
 }
 
+
+/*
+ * cycle
+ * ----------------------------
+ * Loop de execução do programa. Enquanto
+ * o status de saída for válido (0), ele
+ * executa as funções de simulação e escreve
+ * todos os valores em uso em log.txt.
+ *
+ */
+void cycle() {
+    while (!status) {
+        check_status();
+        set();
+        go();
+        debugger();
+    }
+}
+
+
+/*
+ * interactive
+ * ----------------------------
+ * Fornece um modo interativo de executar
+ * o programa, a cada ENTER sendo um novo
+ * clock, exibindo na tela a saída para
+ * facilitar a depuração.
+ *
+ */
+void interactive() {
+    char buffer = '\n';
+    system("clear");
+    while (buffer == '\n') {
+        if (check_status()) {
+            break;
+        }
+        printf("CLOCK ATUAL: %d\n", clocks);
+        finalize();
+        printf("continuar? ");
+        scanf("%c", &buffer);
+        set();
+        go();
+        debugger();
+        system("clear");
+    }
+    system("clear");
+}
+
+
 /*******************************************************/
 
 // +------+
@@ -1524,30 +1599,10 @@ int main(int argc, char const *argv[]) {
 
     debugger(); // mostrar estado inicial
 
-    // while (!status) {
-        // check_status();
-    //     set();
-    //     go();
-    //     // debugger();
-    // }
+    // cycle();
 
-    system("clear");
-    char buffer = 10;
-    while (buffer == 10) {
-        if (check_status()) {
-            break;
-        }
-
-        printf("CLOCK ATUAL: %d\n", clocks);
-        finalize();
-        printf("continuar? ");
-        scanf("%c", &buffer);
-        set();
-        go();
-        debugger();
-        system("clear");
-    }
-    system("clear");
+    // para facilitar a depuração, use o modo interativo
+    interactive();
 
     // finalizar execução e exibir informações na tela
     finalize();
