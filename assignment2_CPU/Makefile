@@ -27,12 +27,12 @@ INCLUDES = .
 
 # compiler flags
 # FLAGS = -g -std=c99 -lm -Wall -pedantic
-FLAGS = -g -lm
+FLAGS = -g -lm -pedantic
 
 # in case ANSI C is necessary
 # FLAGS = -g -std=c89 -lm -Wall
 
-all: compile
+all: compile run
 
 compile:
 	$(CC) -o $(BINARY) -I $(INCLUDES) $(SRC) $(FLAGS)

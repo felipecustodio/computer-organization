@@ -34,6 +34,10 @@
 #define DEBUG 1
 #define IF_DEBUG if (DEBUG)
 
+// obter bit na posição p do binário x
+// shift de p posições para a direita
+// bit da posição p agora está acima do 1
+// and 1 retorna o bit p.
 #define GETBIT(x,p) (((x)>>(p))&1)
 
 #define TRUE  1
@@ -50,6 +54,9 @@ typedef unsigned int word;
 #define STATUS_INVALID_ALU    3
 #define STATUS_INVALID_REG    4
 #define STATUS_SUCCESS 	      5
+#define STATUS_INFINITE       6
+
+#define MAX_RUNS 5000
 
 /*******************************************************/
 
@@ -117,6 +124,8 @@ char* status_message() {
 		case STATUS_SUCCESS:
 			exit_message = ("Programa foi executado com sucesso.\n");
 			break;
+        case STATUS_INFINITE:
+            exit_message = ("Provável loop infinito.\n");
     }
     return exit_message;
 }
@@ -1062,13 +1071,24 @@ void ALU_OUT() {
 					 (state[0] & state[1] & state[2] & state[3] & !state[4]);
 
 	 // atualizando estado para o próximo ciclo
-	 state[0] = next_state[0];
-	 state[1] = next_state[1];
-	 state[2] = next_state[2];
-	 state[3] = next_state[3];
-	 state[4] = next_state[4];
+	 // state[0] = next_state[0];
+	 // state[1] = next_state[1];
+	 // state[2] = next_state[2];
+	 // state[3] = next_state[3];
+	 // state[4] = next_state[4];
 
  }
+
+
+void CONTROL_NEXT() {
+    // atualizando estado para o próximo ciclo
+    state[0] = next_state[0];
+    state[1] = next_state[1];
+    state[2] = next_state[2];
+    state[3] = next_state[3];
+    state[4] = next_state[4];
+
+}
 
 /*******************************************************/
 
@@ -1265,12 +1285,13 @@ void set() {
  * ----------------------------
  */
 void go() {
+    CONTROL();
     MEMORY_BANK();
     IR_SET();
     PROGRAM_COUNTER();
     ALU_OUT();
     REGISTER_BANK();
-    CONTROL();
+    CONTROL_NEXT();
     clocks++;
 }
 
@@ -1291,6 +1312,7 @@ int check_status() {
     if (MAR > MAX_SIZE || MAR < 0) {
         status = STATUS_INVALID_ACCESS;
     }
+
     // checar se instrução é válida
     // checar código de operação?
     //  TODO
@@ -1298,7 +1320,7 @@ int check_status() {
     //     status = STATUS_INVALID_INSTR;
     // }
 
-    // checar se programa chegou ao fim
+    // checar se instrução é inválida
     // 4294967295 = 00xffffffff = linha vazia
     if (MDR == 4294967295) {
         status = STATUS_INVALID_INSTR;
@@ -1316,7 +1338,14 @@ int check_status() {
     //     status = STATUS_INVALID_REG;
     // }
 
-    return status;
+    // checar se programa já rodou mais
+    // de MAX_RUNS vezes, o que pode indicar
+    // loop infinito, já que estamos lidando
+    // com programas reduzidos.
+    if (clocks > MAX_RUNS) {
+        status = STATUS_INFINITE;
+    }
+
 }
 
 
@@ -1468,7 +1497,6 @@ void debugger() {
 // +------+
 int main(int argc, char const *argv[]) {
 
-	int i;
 	const char* source = NULL;
 
 	// verificar se código fonte foi passado como argumento
@@ -1496,18 +1524,12 @@ int main(int argc, char const *argv[]) {
 
     debugger(); // mostrar estado inicial
 
-    // i = 0;
-    // while (!(check_status())) {
+    // while (!status) {
+        // check_status();
     //     set();
     //     go();
     //     // debugger();
-    //     i++;
-    //     if (i > 50000) {
-    //         printf("ERRO: Provável loop infinito. Saindo...\n");
-    //         break;
-    //     }
     // }
-    // printf("Número de execuções do loop: %d\n\n", i);
 
     system("clear");
     char buffer = 10;
@@ -1515,6 +1537,7 @@ int main(int argc, char const *argv[]) {
         if (check_status()) {
             break;
         }
+
         printf("CLOCK ATUAL: %d\n", clocks);
         finalize();
         printf("continuar? ");
