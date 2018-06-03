@@ -1123,7 +1123,7 @@ void initialize(const char* source) {
         instr_counter++;
 	}
     // armazenar endereço da última instrução válida
-    last_valid = ((instr_counter - 1) * 4) - 4;
+    last_valid = ((instr_counter - 1) * 4);
 
 	// fechar arquivo do código fonte
 	fclose(bin);
@@ -1230,11 +1230,11 @@ void finalize() {
     memory_word_pointer = (word*)(MEMORY);
     // para manter formatação em colunas na sáida, acessamos utilizando índices i e j
     // ponteiro de palavra vai acessar endereço de MEMORY[indice]
-	for (i = 0; i < 28; i += 4) {
+	for (i = 0; i < 32; i += 4) {
         memory_word_pointer = (word*)(&(MEMORY[i]));
 		for (j = i; j < (i + (32 * 4)); j += 32) {
             memory_word_pointer = (word*)(&MEMORY[j]);
-            printf("[%02d] = %u\t", j, (*memory_word_pointer));
+            printf("[%02d] = %5u\t", j, (*memory_word_pointer));
 		}
 		printf("\n");
 	}
@@ -1303,9 +1303,8 @@ int check_status() {
     // }
 
     // checar se programa chegou ao fim
-    if (PC > last_valid && MAR > last_valid) {
-        printf("MAR = %d\n", MAR);
-        printf("last_valid = %d\n", last_valid);
+    // 4294967295 = 00xffffffff = linha vazia
+    if (MDR == 4294967295) {
         status = STATUS_INVALID_INSTR;
     }
 
@@ -1504,20 +1503,33 @@ int main(int argc, char const *argv[]) {
 	start();
 
     // teste com 3 clocks (comparar com saída do PDF)
-    debugger();
-	i = 0;
-    // while (i < 100) {
-    while (!(check_status())) {
+    debugger(); // mostrar estado inicial
+
+    // i = 0;
+    // while (!(check_status())) {
+    //     set();
+    //     go();
+    //     // debugger();
+    //     i++;
+    //     if (i > 50000) {
+    //         printf("ERRO: Provável loop infinito. Saindo...\n");
+    //         break;
+    //     }
+    // }
+    // printf("Número de execuções do loop: %d\n\n", i);
+
+    system("clear");
+    char buffer = 10;
+    while (buffer == 10) {
+        printf("CLOCK ATUAL: %d\n", clocks);
+        finalize();
+        printf("continuar? ");
+        scanf("%c", &buffer);
         set();
         go();
         debugger();
-        i++;
-        if (i > 100) {
-            printf("ERRO: Provável loop infinito. Saindo...\n");
-            exit(0);
-        }
+        system("clear");
     }
-    printf("Número de execuções do loop: %d\n\n", i);
 
     // finalizar execução e exibir informações na tela
     finalize();
