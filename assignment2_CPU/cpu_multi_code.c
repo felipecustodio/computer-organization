@@ -928,6 +928,14 @@ void ALU() {
 	else if ((ALUInput[2] == 1) && (ALUInput[1] == 1) && (ALUInput[0] == 1)) {
 		(operator_1 < operator_2) ? (ALUResult = 1) : (ALUResult = 0);
 	}
+
+    // setar bit ALU_ZERO
+    if (ALUResult == 0) {
+        ALU_zero = 1;
+    } else {
+        ALU_zero = 0;
+    }
+
 }
 
 
@@ -1525,11 +1533,9 @@ void debugger() {
 		fprintf(f_debug, "\n");
 	}
 
+    // exibir próximo estado em decimal para conferir com o diagrama de estados
     fprintf(f_debug, "next state: ");
-    for (i = 0; i < 5; i++) {
-        fprintf(f_debug, "%d", next_state[i]);
-    }
-    fprintf(f_debug, "\n");
+    fprintf(f_debug, "%d\n", bin2dec(next_state, 5));
 
     fprintf(f_debug, "\n");
     fprintf(f_debug, "************************************************************\n");
@@ -1618,12 +1624,11 @@ int main(int argc, char const *argv[]) {
 	// inicializar sinais de controle
 	start();
 
-    debugger(); // mostrar estado inicial
-
-    // cycle();
+    debugger(); // colocar estado inicial no log
+    cycle();
 
     // para facilitar a depuração, use o modo interativo
-    interactive();
+    // interactive();
 
     // finalizar execução e exibir informações na tela
     finalize();
