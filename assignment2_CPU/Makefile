@@ -32,7 +32,7 @@ FLAGS = -g -lm
 # in case ANSI C is necessary
 # FLAGS = -g -std=c89 -lm -Wall
 
-all: compile run
+all: compile
 
 compile:
 	$(CC) -o $(BINARY) -I $(INCLUDES) $(SRC) $(FLAGS)
