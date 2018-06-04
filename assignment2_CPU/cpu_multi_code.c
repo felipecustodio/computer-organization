@@ -789,10 +789,10 @@ void MUX_PC() {
 void MUX_BNE() {
 	switch (BNE) {
 	  case 0:
-			PCControl = ((ALU_zero && PCWriteCond) | PCWrite);
+			PCControl = ((ALU_zero & PCWriteCond) | PCWrite);
 			break;
 		case 1:
-			PCControl = (((!ALU_zero) && PCWriteCond) | PCWrite);
+			PCControl = (((!ALU_zero) & PCWriteCond) | PCWrite);
 			break;
 	}
 }
@@ -911,31 +911,31 @@ void ALU_CONTROL() {
 			switch(ALUOp0) {
 				case 0:	//precisa checar código de operação, tipo-r
 					// (ALUOp = 10 e Function = 100000) operação = add
-					if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 0) && ((function[1] == 0) && ((function[0] == 0))))))) {
+					if ((function[5] == 1) & ((function[4] == 0) & ((function[3] == 0) & ((function[2] == 0) & ((function[1] == 0) & ((function[0] == 0))))))) {
 						ALUInput[2] = 0;
 						ALUInput[1] = 1;
 						ALUInput[0] = 0;
 					}
 					// (ALUOp = 10 e Function = 100010) operação = subtract
-					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 0) && ((function[1] == 1) && ((function[0] == 0))))))) {
+					else if ((function[5] == 1) & ((function[4] == 0) & ((function[3] == 0) & ((function[2] == 0) & ((function[1] == 1) & ((function[0] == 0))))))) {
 						ALUInput[2] = 1;
 						ALUInput[1] = 1;
 						ALUInput[0] = 0;
 					}
 					// (ALUOp = 10 e Function = 100100) operação = and
-					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 1) && ((function[1] == 0) && ((function[0] == 0))))))) {
+					else if ((function[5] == 1) & ((function[4] == 0) & ((function[3] == 0) & ((function[2] == 1) & ((function[1] == 0) & ((function[0] == 0))))))) {
 						ALUInput[2] = 0;
 						ALUInput[1] = 0;
 						ALUInput[0] = 0;
 					}
 					// (ALUOp = 10 e Function = 100101) operação = or
-					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 1) && ((function[1] == 0) && ((function[0] == 1))))))) {
+					else if ((function[5] == 1) & ((function[4] == 0) & ((function[3] == 0) & ((function[2] == 1) & ((function[1] == 0) & ((function[0] == 1))))))) {
 						ALUInput[2] = 0;
 						ALUInput[1] = 0;
 						ALUInput[0] = 1;
 					}
 					// (ALUOp = 10 e Function = 101010) operação = set on less than
-					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 1) && ((function[2] == 0) && ((function[1] == 1) && ((function[0] == 0))))))) {
+					else if ((function[5] == 1) & ((function[4] == 0) & ((function[3] == 1) & ((function[2] == 0) & ((function[1] == 1) & ((function[0] == 0))))))) {
 						ALUInput[2] = 1;
 						ALUInput[1] = 1;
 						ALUInput[0] = 1;
@@ -962,23 +962,23 @@ void ALU_CONTROL() {
  */
 void ALU() {
 	// (ALUInput = 010) operação = add
-	if ((ALUInput[2] == 0) && (ALUInput[1] == 1) && (ALUInput[0] == 0)) {
+	if ((ALUInput[2] == 0) & (ALUInput[1] == 1) & (ALUInput[0] == 0)) {
 		ALUResult = operator_1 + operator_2;
 	}
 	// (ALUInput = 110) operação = subtract
-	else if ((ALUInput[2] == 1) && (ALUInput[1] == 1) && (ALUInput[0] == 0)) {
+	else if ((ALUInput[2] == 1) & (ALUInput[1] == 1) & (ALUInput[0] == 0)) {
 		ALUResult = operator_1 - operator_2;
 	}
 	// (ALUInput = 000) operação = and
-	else if ((ALUInput[2] == 0) && (ALUInput[1] == 0) && (ALUInput[0] == 0)) {
-		ALUResult = operator_1 && operator_2;
+	else if ((ALUInput[2] == 0) & (ALUInput[1] == 0) & (ALUInput[0] == 0)) {
+		ALUResult = operator_1 & operator_2;
 	}
 	// (ALUInput = 001) operação = or
-	else if ((ALUInput[2] == 0) && (ALUInput[1] == 0) && (ALUInput[0] == 1)) {
+	else if ((ALUInput[2] == 0) & (ALUInput[1] == 0) & (ALUInput[0] == 1)) {
 		ALUResult = operator_1 | operator_2;
 	}
 	// (ALUInput = 111) operação = set on less than
-	else if ((ALUInput[2] == 1) && (ALUInput[1] == 1) && (ALUInput[0] == 1)) {
+	else if ((ALUInput[2] == 1) & (ALUInput[1] == 1) & (ALUInput[0] == 1)) {
 		(operator_1 < operator_2) ? (ALUResult = 1) : (ALUResult = 0);
 	}
 
@@ -1025,113 +1025,113 @@ void ALU_OUT() {
     //REGDST POSSUI DOIS BITS
 
  	//RegDst0 = (S0 * S1 * S2 * !S3 * !S4)
-	RegDst0 = (state[0] && state[1] && state[2] && !state[3] && !state[4]);
+	RegDst0 = (state[0] & state[1] & state[2] & !state[3] & !state[4]);
 
 	//RegDst1 = (S0 * S1 * !S2 * S3 * !S4) + (S0 * !S1 * !S2 * !S3 * S4)
-	RegDst1 = (state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-              (state[0] && !state[1] && !state[2] && !state[3] && state[4]);
+	RegDst1 = (state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+              (state[0] & !state[1] & !state[2] & !state[3] & state[4]);
 
     /*RegWrite = (!S0 * !S1 * S2 * !S3 * !S4) + (S0 * S1 * S2 * !S3 * !S4) +
      		     (S0 * S1 * !S2 * S3 * !S4) + (S0 * !S1 * S2 * S3 * !S4) +
      		     (!S0 * !S1 * !S2 * !S3 * S4) + (S0 * !S1 * !S2 * !S3 * S4)
     */
-	RegWrite = (!state[0] && !state[1] && state[2] && !state[3] && !state[4]) |
-               (state[0] && state[1] && state[2] && !state[3] && !state[4]) |
-			   (state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-               (state[0] && !state[1] && state[2] && state[3] && !state[4]) |
-			   (!state[0] && !state[1] && !state[2] && !state[3] && state[4]) |
-               (state[0] && !state[1] && !state[2] && !state[3] && state[4]);
+	RegWrite = (!state[0] & !state[1] & state[2] & !state[3] & !state[4]) |
+               (state[0] & state[1] & state[2] & !state[3] & !state[4]) |
+			   (state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+               (state[0] & !state[1] & state[2] & state[3] & !state[4]) |
+			   (!state[0] & !state[1] & !state[2] & !state[3] & state[4]) |
+               (state[0] & !state[1] & !state[2] & !state[3] & state[4]);
 
     /*ALUSrcA = (!S0 * S1 * !S2 * !S3 * !S4) + (!S0 * S1 * S2 * !S3 * !S4) +
      		    (!S0 * !S1 * !S2 * S3 * !S4) + (!S0 * !S1 * S2 * S3 * !S4) +
      		    (!S0 * S1 * S2 * S3 * !S4) + (S0 * S1 * S2 * S3 * !S4)
     */
-	ALUSrcA = (!state[0] && state[1] && !state[2] && !state[3] && !state[4]) |
-              (!state[0] && state[1] && state[2] && !state[3] && !state[4]) |
-		      (!state[0] && !state[1] && !state[2] && state[3] && !state[4]) |
-              (!state[0] && !state[1] && state[2] && state[3] && !state[4]) |
-			  (!state[0] && state[1] && state[2] && state[3] && !state[4]) |
-              (state[0] && state[1] && state[2] && state[3] && !state[4]);
+	ALUSrcA = (!state[0] & state[1] & !state[2] & !state[3] & !state[4]) |
+              (!state[0] & state[1] & state[2] & !state[3] & !state[4]) |
+		      (!state[0] & !state[1] & !state[2] & state[3] & !state[4]) |
+              (!state[0] & !state[1] & state[2] & state[3] & !state[4]) |
+			  (!state[0] & state[1] & state[2] & state[3] & !state[4]) |
+              (state[0] & state[1] & state[2] & state[3] & !state[4]);
 
     // ALUSRCB POSSUI DOIS BITS
     //ALUSrcB0 = (!S0 * !S1 * !S2 * !S3 * !S4) + (S0 * !S1 * !S2 * !S3 * !S4)
-	ALUSrcB0 = (!state[0] && !state[1] && !state[2] && !state[3] && !state[4]) |
-                (state[0] && !state[1] && !state[2] && !state[3] && !state[4]);
+	ALUSrcB0 = (!state[0] & !state[1] & !state[2] & !state[3] & !state[4]) |
+                (state[0] & !state[1] & !state[2] & !state[3] & !state[4]);
 
     /*ALUSrcB1 = (S0 * !S1 * !S2 * !S3 * !S4) + (!S0 * S1 * !S2 * !S3 * !S4) +
      		     (!S0 * !S1 * S2 * S3 * !S4) + (S0 * S1 * S2 * S3 * !S4)
     */
-	ALUSrcB1 = (state[0] && !state[1] && !state[2] && !state[3] && !state[4]) |
-                (!state[0] && state[1] && !state[2] && !state[3] && !state[4]) |
-				(!state[0] && !state[1] && state[2] && state[3] && !state[4]) |
-                (state[0] && state[1] && state[2] && state[3] && !state[4]);
+	ALUSrcB1 = (state[0] & !state[1] & !state[2] & !state[3] & !state[4]) |
+                (!state[0] & state[1] & !state[2] & !state[3] & !state[4]) |
+				(!state[0] & !state[1] & state[2] & state[3] & !state[4]) |
+                (state[0] & state[1] & state[2] & state[3] & !state[4]);
 
     // ALUOP POSSUI DOIS BITS
     /*ALUOp0 = (!S0 * !S1 * !S2 * S3 * !S4) + (!S0 * S1 * S2 * S3 * !S4) +
      		   (S0 * S1 * S2 * S3 * !S4)
     */
-	ALUOp0 = (!state[0] && !state[1] && !state[2] && state[3] && !state[4]) |
-             (!state[0] && state[1] && state[2] && state[3] && !state[4]) |
-             (state[0] && state[1] && state[2] && state[3] && !state[4]);
+	ALUOp0 = (!state[0] & !state[1] & !state[2] & state[3] & !state[4]) |
+             (!state[0] & state[1] & state[2] & state[3] & !state[4]) |
+             (state[0] & state[1] & state[2] & state[3] & !state[4]);
 
     //ALUOp1 = (!S0 * S1 * S2 * !S3 * !S4) + (S0 * S1 * S2 * S3 * !S4)
-	ALUOp1 = (!state[0] && state[1] && state[2] && !state[3] && !state[4]) |
-             (state[0] && state[1] && state[2] && state[3] && !state[4]);
+	ALUOp1 = (!state[0] & state[1] & state[2] & !state[3] & !state[4]) |
+             (state[0] & state[1] & state[2] & state[3] & !state[4]);
 
     //PCSOURCE POSSUI 2 BITS
 	/*PCSource0 = (!S0 * !S1 * !S2 * S3 * !S4) + (!S0 * S1 * !S2 * S3 * !S4) +
      		      (S0 * S1 * !S2 * S3 * !S4) + (!S0 * S1 * S2 * S3 * !S4)
     */
-	PCSource0 = (!state[0] && !state[1] && !state[2] && state[3] && !state[4]) |
-                (!state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-		        (state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-                (!state[0] && state[1] && state[2] && state[3] && !state[4]);
+	PCSource0 = (!state[0] & !state[1] & !state[2] & state[3] & !state[4]) |
+                (!state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+		        (state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+                (!state[0] & state[1] & state[2] & state[3] & !state[4]);
     /*PCSource1 = (S0 * !S1 * !S2 * S3 * !S4) + (!S0 * S1 * !S2 * S3 * !S4) +
      		      (S0 * S1 * !S2 * S3 * !S4) + (S0 * !S1 * !S2 * !S3 * !S4)
     */
-	PCSource1 = (state[0] && !state[1] && !state[2] && state[3] && !state[4]) |
-                (!state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-				(state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-                (state[0] && !state[1] && !state[2] && !state[3] && state[4]);
+	PCSource1 = (state[0] & !state[1] & !state[2] & state[3] & !state[4]) |
+                (!state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+				(state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+                (state[0] & !state[1] & !state[2] & !state[3] & state[4]);
 
     //PCWriteCond = (!S0 * !S1 * !S2 * S3 * !S4) + (!S0 * S1 * S2 * S3 * !S4)
-	PCWriteCond = (!state[0] && !state[1] && !state[2] && state[3] && !state[4]) |
-                  (!state[0] && state[1] && state[2] && state[3] && !state[4]);
+	PCWriteCond = (!state[0] & !state[1] & !state[2] & state[3] & !state[4]) |
+                  (!state[0] & state[1] & state[2] & state[3] & !state[4]);
 
 	/*PCWrite = (!S0 * S1 * !S2 * !S3 * !S4) + (!S0 * S1 * S2 * !S3 * !S4) +
      		     (!S0 * !S1 * !S2 * S3 * !S4) + (!S0 * !S1 * S2 * S3 * !S4) +
      		     (!S0 * S1 * S2 * S3 * !S4) + (S0 * S1 * S2 * S3 * !S4)
     */
-	PCWrite = (!state[0] && !state[1] && !state[2] && !state[3] && !state[4]) |
-              (state[0] && !state[1] && !state[2] && state[3] && !state[4]) |
-			  (!state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-              (state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-			  (state[0] && !state[1] && !state[2] && !state[3] && state[4]);
+	PCWrite = (!state[0] & !state[1] & !state[2] & !state[3] & !state[4]) |
+              (state[0] & !state[1] & !state[2] & state[3] & !state[4]) |
+			  (!state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+              (state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+			  (state[0] & !state[1] & !state[2] & !state[3] & state[4]);
 
     //IorD = (S0 * S1 * !S2 * !S3 * !S4) + (S0 * !S1 * S2 * !S3 * !S4)
-	IorD = (state[0] && state[1] && !state[2] && !state[3] && !state[4]) |
-           (state[0] && !state[1] && state[2] && !state[3] && !state[4]);
+	IorD = (state[0] & state[1] & !state[2] & !state[3] & !state[4]) |
+           (state[0] & !state[1] & state[2] & !state[3] & !state[4]);
 
     //MemRead = (!S0 * !S1 * !S2 * !S3 * !S4) + (S0 * S1 * !S2 * !S3 * !S4)
-	MemRead = (!state[0] && !state[1] && !state[2] && !state[3] && !state[4]) |
-              (state[0] && state[1] && !state[2] && !state[3] && !state[4]);
+	MemRead = (!state[0] & !state[1] & !state[2] & !state[3] & !state[4]) |
+              (state[0] & state[1] & !state[2] & !state[3] & !state[4]);
 
     //MemWrite = (S0 * !S1 * S2 * !S3 * !S4)
-	MemWrite = (state[0] && !state[1] && state[2] && !state[3] && !state[4]);
+	MemWrite = (state[0] & !state[1] & state[2] & !state[3] & !state[4]);
 
 	//BNE = (!S0 * S1 * S2 * S3 * !S4)
-	BNE = (!state[0] && state[1] && state[2] && state[3] && !state[4]);
+	BNE = (!state[0] & state[1] & state[2] & state[3] & !state[4]);
 
     //IRWrite = (!S0 * !S1 * !S2 * !S3 * !S4)
-	IRWrite = (!state[0] && !state[1] && !state[2] && !state[3] && !state[4]);
+	IRWrite = (!state[0] & !state[1] & !state[2] & !state[3] & !state[4]);
 
     // MEMTOREG POSSUI 2 BITS
     //MemtoReg0 = (!S0 * S1 * !S2 * S3 * !S4)
-	MemtoReg0 = (!state[0] && !state[1] && state[2] && !state[3] && !state[4]);
+	MemtoReg0 = (!state[0] & !state[1] & state[2] & !state[3] & !state[4]);
 
 	//MemtoReg1 = (S0 * S1 * !S2 * S3 * !S4) + (S0 * !S1 * S2 * !S3 * S4)
-	MemtoReg1 = (state[0] && state[1] && !state[2] && state[3] && !state[4]) |
-                 (state[0] && !state[1] && state[2] && !state[3] && state[4]);
+	MemtoReg1 = (state[0] & state[1] & !state[2] & state[3] & !state[4]) |
+                 (state[0] & !state[1] & state[2] & !state[3] & state[4]);
 
 
     // ***** Equacoes de proximo estado: ******
@@ -1140,79 +1140,79 @@ void ALU_OUT() {
 
     // ANALISE A PARTIR DO BIT MENOS SIGNIFICATIVO (NS0)
                         // ESTADO 1 = (!S0 * !S1 * !S2 * !S3 * !S4)
-    next_state[0] =     (!state[0] && !state[1] && !state[2] && !state[3] && !state[4] ) |
+    next_state[0] =     (!state[0] & !state[1] & !state[2] & !state[3] & !state[4] ) |
                         // ESTADO 3 = (!S0 * S1 * !S2 * !S3 * !S4 * OP0 * OP1 * !OP2 * !OP3 * !OP4 * OP5)
-                        (!state[0] && state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && op_code[5]) |
+                        (!state[0] & state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & op_code[5]) |
                         // ESTADO 5 = (!S0 * S1 * !S2 * !S3 * !S4 * OP0 * OP1 * !OP2 * OP3 * !OP4 * OP5)
-                        (!state[0] && state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && op_code[1] && !op_code[2] && op_code[3] && !op_code[4] && op_code[5]) |
+                        (!state[0] & state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & op_code[1] & !op_code[2] & op_code[3] & !op_code[4] & op_code[5]) |
                         // ESTADO 7 = (!S0 * S1 * S2 * !S3 * !S4)
-                        (!state[0] && state[1] && state[2] && !state[3] && !state[4] ) |
+                        (!state[0] & state[1] & state[2] & !state[3] & !state[4] ) |
                         // ESTADO 9 = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * OP1 * !OP2 * !OP3 * !OP4 * !OP5)
-                        (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+                        (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
                         // ESTADO 11 = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * !OP1 * OP2 * !OP3 * OP4 * !OP5)
-                        (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && op_code[4] && !op_code[5]) |
+                        (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & op_code[4] & !op_code[5]) |
                         // ESTADO 13 = (!S0 * !S1 * S2 * S3 * !S4)
-                        (!state[0] && !state[1] && state[2] && state[3] && !state[4] ) |
+                        (!state[0] & !state[1] & state[2] & state[3] & !state[4] ) |
                         // ESTADO 15 = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * OP3 * !OP4 * !OP5)
-                        (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && op_code[2] && op_code[3] && !op_code[4] && !op_code[5]) |
+                        (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & op_code[2] & op_code[3] & !op_code[4] & !op_code[5]) |
                         // ESTADO 17 = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * OP1 * !OP2 * !OP3 * !OP4 * !OP5)
-                        (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]);
+                        (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]);
 
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * OP1 * !OP2 * !OP4 * OP5)
-	next_state[1] =  (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && op_code[1] && !op_code[2] && !op_code[4] && op_code[5]) |
+	next_state[1] =  (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & op_code[1] & !op_code[2] & !op_code[4] & op_code[5]) |
 					 //ESTADO X = (!S0 * S1 * !S2 * !S3 * !S4 * OP0 * OP1 * !OP2 * !OP3 * !OP4 * OP5)
-					 (!state[0] && state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && op_code[5]) |
+					 (!state[0] & state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * !OP2 * !OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (!S0 * S1 * S2 * !S3 * !S4)
-					 (!state[0] && state[1] && state[2] && !state[3] && !state[4]) |
+					 (!state[0] & state[1] & state[2] & !state[3] & !state[4]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * !OP3 * OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * !OP1 * OP2 * !OP3 * OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * !OP1 * OP2 * !OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && op_code[2] && op_code[3] && !op_code[4] && !op_code[5]);
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & op_code[2] & op_code[3] & !op_code[4] & !op_code[5]);
 
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * !OP3 * !OP4 * !OP5)
-	next_state[2] =  (state[0] && state[1] && !state[2] && !state[3] && !state[4]) |
+	next_state[2] =  (state[0] & state[1] & !state[2] & !state[3] & !state[4]) |
 					 //ESTADO X = (!S0 * S1 * !S2 * !S3 * !S4 * OP0 * OP1 * !OP2 * OP3 * !OP4 * OP5)
-					 (!state[0] && state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && op_code[1] && !op_code[2] && op_code[3] && !op_code[4] && op_code[5]) |
+					 (!state[0] & state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & op_code[1] & !op_code[2] & op_code[3] & !op_code[4] & op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * !OP2 * !OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (!S0 * S1 * S2 * !S3 * !S4)
-					 (!state[0] && state[1] && state[2] && !state[3] && !state[4]) |
+					 (!state[0] & state[1] & state[2] & !state[3] & !state[4]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * !OP1 * !OP2 * OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && !op_code[2] && op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & !op_code[2] & op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (!S0 * !S1 * S2 * S3 * !S4)
-					 (!state[0] && !state[1] && state[2] && state[3] && !state[4]) |
+					 (!state[0] & !state[1] & state[2] & state[3] & !state[4]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * !OP1 * OP2 * !OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && op_code[2] && op_code[3] && !op_code[4] && !op_code[5]);
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & op_code[2] & op_code[3] & !op_code[4] & !op_code[5]);
 
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * !OP3 * !OP4 * !OP5)
-	next_state[3] =  (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+	next_state[3] =  (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * OP1 * !OP2 * !OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * !OP3 * OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * !OP1 * OP2 * !OP3 * OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * !OP2 * OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && !op_code[2] && op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & !op_code[2] & op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (!S0 * !S1 * S2 * S3 * !S4)
-					 (!state[0] && !state[1] && state[2] && state[3] && !state[4]) |
+					 (!state[0] & !state[1] & state[2] & state[3] & !state[4]) |
 					 //ESTADO X = (!S0 * !S1 * S2 * S3 * !S4)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && !op_code[1] && op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & !op_code[1] & op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * !OP0 * !OP1 * OP2 * OP3 * !OP4 * !OP5)
-					 (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && !op_code[0] && !op_code[1] && op_code[2] && op_code[3] && !op_code[4] && !op_code[5]);
+					 (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & !op_code[0] & !op_code[1] & op_code[2] & op_code[3] & !op_code[4] & !op_code[5]);
 
 					 //ESTADO X = (S0 * !S1 * !S2 * !S3 * !S4 * OP0 * OP1 * !OP2 * !OP3 * !OP4 * !OP5)
-	next_state[4] =  (state[0] && !state[1] && !state[2] && !state[3] && !state[4] && op_code[0] && op_code[1] && !op_code[2] && !op_code[3] && !op_code[4] && !op_code[5]) |
+	next_state[4] =  (state[0] & !state[1] & !state[2] & !state[3] & !state[4] & op_code[0] & op_code[1] & !op_code[2] & !op_code[3] & !op_code[4] & !op_code[5]) |
 					 //ESTADO X = (S0 * S1 * S2 * S3 * !S4)
-					 (state[0] && state[1] && state[2] && state[3] && !state[4]);
+					 (state[0] & state[1] & state[2] & state[3] & !state[4]);
 
  }
 
@@ -1474,7 +1474,7 @@ int check_status() {
 
     // checar acesso ao banco de registradores
 	// (checar após início do programa, pois começa com null)
-    if (write_reg == NULL && clocks > 0) {
+    if (write_reg == NULL & clocks > 0) {
         status = STATUS_INVALID_REG;
     }
 

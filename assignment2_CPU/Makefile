@@ -27,7 +27,7 @@ INCLUDES = .
 
 # compiler flags
 # FLAGS = -g -std=c99 -lm -Wall -pedantic
-FLAGS = -g -lm -pedantic
+FLAGS = -g -lm
 
 # in case ANSI C is necessary
 # FLAGS = -g -std=c89 -lm -Wall
