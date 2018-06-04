@@ -854,19 +854,37 @@ void IR_UNIT() {
  * ----------------------------
  *   O que ela faz:
  *			SINAL DE CONTROLE: RegWrite
- *			RESULTADO: O REGISTRADOR A RECEBE O VALOR DO REGISTRADOR APONTADO POR RS
- *					   O REGISTRADOR B RECEBE O VALOR DO REGISTRADOR APONTADO POR RT
- 					   SE RegWrite ESTIVER HABILITADO, OCORRERÁ A ESCRITA NO BANCO DE REGISTRADORES
+ *			RESULTADO: SE RegWrite ESTIVER HABILITADO, OCORRERÁ A ESCRITA NO BANCO DE REGISTRADORES
  *
  */
 void REGISTER_BANK() {
-    A = *(get_register(unsigned_bin2dec(rs, 5)));
-    B = *(get_register(unsigned_bin2dec(rt, 5)));
-
 	if (RegWrite) {
         // registrador recebe conteúdo
 		(*write_reg) = reg_write_data;
 	}
+}
+
+/*
+ * FUNCAO AUXILIAR PARA TRATAR DE A
+ * ----------------------------
+ *   O que ela faz:
+ *			RESULTADO: O REGISTRADOR A RECEBE O VALOR DO REGISTRADOR APONTADO POR RS
+ *
+ */
+void A_UNIT() {
+	A = *(get_register(unsigned_bin2dec(rs, 5)));
+}
+
+
+/*
+ * FUNCAO AUXILIAR PARA TRATAR DE A
+ * ----------------------------
+ *   O que ela faz:
+ *				RESULTADO: O REGISTRADOR B RECEBE O VALOR DO REGISTRADOR APONTADO POR RT
+ *
+ */
+void B_UNIT() {
+	B = *(get_register(unsigned_bin2dec(rt, 5)));
 }
 
 
@@ -942,6 +960,7 @@ void ALU_CONTROL() {
 						ALUInput[1] = 1;
 						ALUInput[0] = 1;
 					}
+					else status = STATUS_INVALID_ALU;
 					break;
 				case 1:	//andi
 					ALUInput[2] = 0;
@@ -1331,6 +1350,9 @@ void start() {
 	MemtoReg0   = 0;
 	MemtoReg1   = 0;
 
+	A = 0;
+	B = 0;
+
 	// inicializa o vetor de estado
 	for(i = 0; i < 5; i++) {
 		state[i] = 0;
@@ -1433,6 +1455,8 @@ void clock() {
     CONTROL();
     MUX_MEMORY();
     SIGNAL_EXTEND_16_TO_32();
+		A_UNIT();
+		B_UNIT();
     MUX_ALU_1();
     MUX_ALU_2();
     ALU_CONTROL();
@@ -1444,9 +1468,8 @@ void clock() {
     MEMORY_BANK();
     IR_UNIT();
     PROGRAM_COUNTER();
-    ALU_OUT();
+		ALU_OUT();
     REGISTER_BANK();
-    CONTROL_NEXT();
     clocks++;
 }
 
@@ -1470,7 +1493,7 @@ int check_status() {
 
     // checar se instrução é inválida
     // 4294967295 = 00xffffffff = linha vazia
-    if (MDR == 4294967295) {
+    if (MDR == -1) {
         status = STATUS_INVALID_INSTR;
     }
 
@@ -1646,13 +1669,16 @@ void debugger() {
  */
 void cycle() {
     while (1) {
-        check_status();
-        clock();
-        debugger();
-        if (status) {
-            break;
-        }
-    }
+    	clock();
+      // debugger(); // debugger escreve no arquivo todas as execuções
+			check_status();
+      if (status) {
+        break;
+      }
+			else {
+				CONTROL_NEXT();
+			}
+  	}
 }
 
 
@@ -1674,7 +1700,7 @@ void interactive() {
         printf("ENTER para continuar, qualquer outra para sair: ");
         scanf("%c", &buffer);
         clock();
-        debugger();
+        // debugger();
         printf("\n\n");
         if (status) {
             break;
