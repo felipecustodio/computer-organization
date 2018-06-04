@@ -909,37 +909,45 @@ void ALU_CONTROL() {
 					break;
 			}
 			break;
-		// precisa checar o campo de função e ALUOp0 sempre será 0
 		case 1:
-			// (ALUOp = 10 e Function = 100000) operação = add
-			if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 0) && ((function[1] == 0) && ((function[0] == 0))))))) {
-				ALUInput[2] = 0;
-				ALUInput[1] = 1;
-				ALUInput[0] = 0;
-			}
-			// (ALUOp = 10 e Function = 100010) operação = subtract
-			else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 0) && ((function[1] == 1) && ((function[0] == 0))))))) {
-				ALUInput[2] = 1;
-				ALUInput[1] = 1;
-				ALUInput[0] = 0;
-			}
-			// (ALUOp = 10 e Function = 100100) operação = and
-			else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 1) && ((function[1] == 0) && ((function[0] == 0))))))) {
-				ALUInput[2] = 0;
-				ALUInput[1] = 0;
-				ALUInput[0] = 0;
-			}
-			// (ALUOp = 10 e Function = 100101) operação = or
-			else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 1) && ((function[1] == 0) && ((function[0] == 1))))))) {
-				ALUInput[2] = 0;
-				ALUInput[1] = 0;
-				ALUInput[0] = 1;
-			}
-			// (ALUOp = 10 e Function = 101010) operação = set on less than
-			else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 1) && ((function[2] == 0) && ((function[1] == 1) && ((function[0] == 0))))))) {
-				ALUInput[2] = 1;
-				ALUInput[1] = 1;
-				ALUInput[0] = 1;
+			switch(ALUOp0) {
+				case 0:	//precisa checar código de operação, tipo-r
+					// (ALUOp = 10 e Function = 100000) operação = add
+					if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 0) && ((function[1] == 0) && ((function[0] == 0))))))) {
+						ALUInput[2] = 0;
+						ALUInput[1] = 1;
+						ALUInput[0] = 0;
+					}
+					// (ALUOp = 10 e Function = 100010) operação = subtract
+					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 0) && ((function[1] == 1) && ((function[0] == 0))))))) {
+						ALUInput[2] = 1;
+						ALUInput[1] = 1;
+						ALUInput[0] = 0;
+					}
+					// (ALUOp = 10 e Function = 100100) operação = and
+					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 1) && ((function[1] == 0) && ((function[0] == 0))))))) {
+						ALUInput[2] = 0;
+						ALUInput[1] = 0;
+						ALUInput[0] = 0;
+					}
+					// (ALUOp = 10 e Function = 100101) operação = or
+					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 0) && ((function[2] == 1) && ((function[1] == 0) && ((function[0] == 1))))))) {
+						ALUInput[2] = 0;
+						ALUInput[1] = 0;
+						ALUInput[0] = 1;
+					}
+					// (ALUOp = 10 e Function = 101010) operação = set on less than
+					else if ((function[5] == 1) && ((function[4] == 0) && ((function[3] == 1) && ((function[2] == 0) && ((function[1] == 1) && ((function[0] == 0))))))) {
+						ALUInput[2] = 1;
+						ALUInput[1] = 1;
+						ALUInput[0] = 1;
+					}
+					break;
+				case 1:	//andi
+					ALUInput[2] = 0;
+					ALUInput[1] = 0;
+					ALUInput[0] = 0;
+					break;
 			}
 			break;
 	}
@@ -968,7 +976,7 @@ void ALU() {
 		ALUResult = operator_1 & operator_2;
 	}
 	// (ALUInput = 001) operação = or
-	else if ((ALUInput[2] == 0) && (ALUInput[1] == 1) && (ALUInput[0] == 1)) {
+	else if ((ALUInput[2] == 0) && (ALUInput[1] == 0) && (ALUInput[0] == 1)) {
 		ALUResult = operator_1 | operator_2;
 	}
 	// (ALUInput = 111) operação = set on less than
@@ -1603,12 +1611,15 @@ void debugger() {
     fprintf(f_debug, "\n");
     fprintf(f_debug, "*** MEMÓRIA ***\n");
 
+	// imprimir as 32 primeiras posições de memória (em inteiros sem sinal)
     memory_word_pointer = (word*)(MEMORY);
-	for (i = 0; i < 28; i += 4) {
+    // para manter formatação em colunas na sáida, acessamos utilizando índices i e j
+    // ponteiro de palavra vai acessar endereço de MEMORY[indice]
+	for (i = 0; i < 32; i += 4) {
         memory_word_pointer = (word*)(&(MEMORY[i]));
 		for (j = i; j < (i + (32 * 4)); j += 32) {
             memory_word_pointer = (word*)(&MEMORY[j]);
-            fprintf(f_debug, "[%02d] = %u\t", j, (*memory_word_pointer));
+            fprintf(f_debug, "[%02d] = %-12u\t", j, (*memory_word_pointer));
 		}
 		fprintf(f_debug, "\n");
 	}
