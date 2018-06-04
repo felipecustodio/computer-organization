@@ -53,10 +53,9 @@ typedef unsigned int word;
 #define STATUS_INVALID_ACCESS 2
 #define STATUS_INVALID_ALU    3
 #define STATUS_INVALID_REG    4
-#define STATUS_SUCCESS 	      5
-#define STATUS_INFINITE       6
+#define STATUS_INFINITE       5
 
-#define MAX_RUNS 5000
+#define MAX_RUNS 5000 // limite de execuções para depurar loops infinitos
 
 /*******************************************************/
 
@@ -121,9 +120,6 @@ char* status_message() {
         case STATUS_VALID:
             exit_message = ("Estado da saída ainda é válido.\n");
 		    break;
-		case STATUS_SUCCESS:
-			exit_message = ("Programa foi executado com sucesso.\n");
-			break;
         case STATUS_INFINITE:
             exit_message = ("Provável loop infinito.\n");
     }
@@ -1161,13 +1157,6 @@ void ALU_OUT() {
 					 //ESTADO X = (S0 * S1 * S2 * S3 * !S4)
 					 (state[0] & state[1] & state[2] & state[3] & !state[4]);
 
-	// atualizando estado para o próximo ciclo
-	// state[0] = next_state[0];
-	// state[1] = next_state[1];
-	// state[2] = next_state[2];
-	// state[3] = next_state[3];
-	// state[4] = next_state[4];
-
  }
 
 
@@ -1349,7 +1338,7 @@ void finalize() {
 			regid = register_name(j);
 			current_reg = get_register(j);
             reg_data = (int)((*current_reg));
-			printf("R%02d (%s) = %d\t", j, regid, reg_data);
+			printf("R%02d (%s) = %-4d\t", j, regid, reg_data);
 		}
 		printf("\n");
 	}
@@ -1365,7 +1354,7 @@ void finalize() {
         memory_word_pointer = (word*)(&(MEMORY[i]));
 		for (j = i; j < (i + (32 * 4)); j += 32) {
             memory_word_pointer = (word*)(&MEMORY[j]);
-            printf("[%02d] = %5u\t", j, (*memory_word_pointer));
+            printf("[%02d] = %-12u\t", j, (*memory_word_pointer));
 		}
 		printf("\n");
 	}
@@ -1378,7 +1367,7 @@ void finalize() {
 // +----------------------+
 
 /*
- * FUNCAO QUE SIMULA O FUNCIONAMENTO DE TODOS OS COMPONENTES DE ACORDO COM O CLOCK
+ * FUNCOES QUE CHAMAM O FUNCIONAMENTO DE TODOS OS COMPONENTES DE ACORDO COM O CLOCK
  * ----------------------------
  */
 void set() {
@@ -1397,19 +1386,13 @@ void set() {
     MUX_PC();
 }
 
-/*
- * FUNCAO QUE SIMULA O FUNCIONAMENTO DE TODOS OS COMPONENTES DE ACORDO COM O CLOCK
- * ----------------------------
- */
+
 void go() {
-    // CONTROL();
-    // CONTROL_NEXT();
     MEMORY_BANK();
     IR_UNIT();
     PROGRAM_COUNTER();
     ALU_OUT();
     REGISTER_BANK();
-    // CONTROL_NEXT();
     clocks++;
 }
 
