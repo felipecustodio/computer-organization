@@ -90,7 +90,7 @@ int unsigned_bin2dec(bit* binary, int size) {
     // converter para decimal
 	for (i = 0; i < size; i++) {
 		if ((int)(binary[i])) {
-			decimal += pow(2, i);
+            decimal += 1 << i;
 		}
 	}
 	return decimal;
@@ -109,36 +109,42 @@ int unsigned_bin2dec(bit* binary, int size) {
   */
 int signed_bin2dec(bit* binary, int size) {
  	int i;
+    int is_negative = 0;
  	int decimal = 0;
+
+    bit* binary_complement = malloc(sizeof(bit) * size);
+    for (i = 0; i < size; i++) {
+        binary_complement[i] = binary[i];
+    }
 
     // checar bit de sinal
     if (binary[size-1] == 1) {
         // fazer complemento de 2
         for (i = 0; i < size; i++) {
             if (binary[i] == 0) {
-                binary[i] = 1;
+                binary_complement[i] = 1;
             } else {
-                binary[i] = 0;
+                binary_complement[i] = 0;
             }
         }
+        is_negative = 1;
     }
 
     // converter para decimal
  	for (i = 0; i < size; i++) {
- 		if ((int)(binary[i])) {
- 			decimal += pow(2, i);
+ 		if ((int)(binary_complement[i])) {
+            decimal += 1 << i;
  		}
  	}
 
     // checar bit de sinal
-    if (binary[size-1] == 1) {
+    if (is_negative) {
         decimal += 1; // somar 1
         decimal = -decimal; // trocar sinal
     }
 
  	return decimal;
-  }
-
+}
 
 
  /*
@@ -237,7 +243,7 @@ reg MAR;    // memory address register
 reg IR;     // instruction register
 reg MDR;    // memory data register
 
-word reg_write_data; // conteúdo a ser escrito em um registrador
+int reg_write_data; // conteúdo a ser escrito em um registrador
 reg* write_reg; // ponteiro para o registrador que receberá write data
 
 reg PC;             // program counter
@@ -481,11 +487,11 @@ char* register_name(int id) {
 reg A; // read data 1
 reg B; // read data 2
 bit ALUInput[3]; // bits que definem quais operações a ULA deverá executar
-word ALUResult; // saída da ULA
-reg ALUOut; // registrador que armazena a saída da ULA
-word immediate_extended; // saída do sign extend
-word operator_1; // primeiro operando
-word operator_2; // segundo operando
+int ALUResult; // saída da ULA
+int ALUOut; // registrador que armazena a saída da ULA
+int immediate_extended; // saída do sign extend
+int operator_1; // primeiro operando
+int operator_2; // segundo operando
 bit ALU_zero; // bit que indica se resultado é 0 ou não
 
 /*******************************************************/
@@ -1212,7 +1218,6 @@ void CONTROL_NEXT() {
     state[2] = next_state[2];
     state[3] = next_state[3];
     state[4] = next_state[4];
-
 }
 
 /*******************************************************/
@@ -1349,9 +1354,10 @@ void finalize() {
 	printf("IR = %u\t", IR);
 	printf("MDR = %u\t", MDR);
 	printf("\n");
-	printf("A = %u\t", A);
-	printf("B = %u\t", B);
-	printf("AluOut = %u\n", ALUOut);
+
+	printf("A = %d\t", A);
+	printf("B = %d\t", B);
+	printf("AluOut = %d\n", ALUOut);
 	printf("Controle = [");
     // bits do sinal de controle
     printf("%d", RegDst0);
