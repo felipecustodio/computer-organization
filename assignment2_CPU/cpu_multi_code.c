@@ -858,15 +858,34 @@ void IR_UNIT() {
  *
  */
 void REGISTER_BANK() {
-    A = *(get_register(unsigned_bin2dec(rs, 5)));
-    B = *(get_register(unsigned_bin2dec(rt, 5)));
-
 	if (RegWrite) {
         // registrador recebe conteúdo
 		(*write_reg) = reg_write_data;
 	}
 }
 
+/*
+ * FUNCAO AUXILIAR PARA TRATAR DE A
+ * ----------------------------
+ *   O que ela faz:
+ *			RESULTADO: O REGISTRADOR A RECEBE O VALOR DO REGISTRADOR APONTADO POR RS
+ *
+ */
+void A_UNIT() {
+	A = *(get_register(unsigned_bin2dec(rs, 5)));
+}
+
+
+/*
+ * FUNCAO AUXILIAR PARA TRATAR DE A
+ * ----------------------------
+ *   O que ela faz:
+ *				RESULTADO: O REGISTRADOR B RECEBE O VALOR DO REGISTRADOR APONTADO POR RT
+ *
+ */
+void B_UNIT() {
+	B = *(get_register(unsigned_bin2dec(rt, 5)));
+}
 
 /*
  * EXTENSÃO DE SINAL DE 16 BITS PARA 32 BITS
@@ -939,7 +958,7 @@ void ALU_CONTROL() {
 						ALUInput[2] = 1;
 						ALUInput[1] = 1;
 						ALUInput[0] = 1;
-					}
+					} else status = STATUS_INVALID_ALU;
 					break;
 				case 1:	//andi
 					ALUInput[2] = 0;
@@ -1329,6 +1348,9 @@ void start() {
 	MemtoReg0   = 0;
 	MemtoReg1   = 0;
 
+	A = 0;
+	B = 0;
+
 	// inicializa o vetor de estado
 	for(i = 0; i < 5; i++) {
 		state[i] = 0;
@@ -1431,6 +1453,8 @@ void clock() {
     CONTROL();
     MUX_MEMORY();
     SIGNAL_EXTEND_16_TO_32();
+	A_UNIT();
+	B_UNIT();
     MUX_ALU_1();
     MUX_ALU_2();
     ALU_CONTROL();
@@ -1444,7 +1468,6 @@ void clock() {
     PROGRAM_COUNTER();
     ALU_OUT();
     REGISTER_BANK();
-    CONTROL_NEXT();
     clocks++;
 }
 
@@ -1468,13 +1491,13 @@ int check_status() {
 
     // checar se instrução é inválida
     // 4294967295 = 00xffffffff = linha vazia
-    if (MDR == 4294967295) {
+    if (MDR == -1) {
         status = STATUS_INVALID_INSTR;
     }
 
     // checar acesso ao banco de registradores
 	// (checar após início do programa, pois começa com null)
-    if (write_reg == NULL & clocks > 0) {
+    if (write_reg == NULL && clocks > 0) {
         status = STATUS_INVALID_REG;
     }
 
@@ -1644,12 +1667,14 @@ void debugger() {
  */
 void cycle() {
     while (1) {
-        check_status();
         clock();
-        debugger();
+        // debugger();
+		check_status();
         if (status) {
             break;
-        }
+        } else {
+			CONTROL_NEXT();
+		}
     }
 }
 
@@ -1666,17 +1691,19 @@ void cycle() {
 void interactive() {
     char buffer = '\n';
     while (buffer == '\n') {
-        check_status();
         printf("CLOCK ATUAL: %d\n", clocks);
         finalize();
         printf("ENTER para continuar, qualquer outra para sair: ");
         scanf("%c", &buffer);
         clock();
-        debugger();
+        // debugger();
+		check_status();
         printf("\n\n");
         if (status) {
             break;
-        }
+        } else {
+			CONTROL_NEXT();
+		}
     }
 }
 
@@ -1713,7 +1740,7 @@ int main(int argc, char const *argv[]) {
 	// inicializar sinais de controle
 	start();
 
-    debugger(); // colocar estado inicial no log
+    // debugger(); // colocar estado inicial no log
     cycle();
 
     // para facilitar a depuração, use o modo interativo
