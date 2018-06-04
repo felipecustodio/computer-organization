@@ -76,7 +76,7 @@ int last_valid = 0; // posição da última instrução válida do programa
 // +----------------------+
 
 /*
- * bin2dec
+ * unsigned_bin2dec
  * ----------------------------
  *   Retorna valor decimal convertido de um binário
  *
@@ -84,16 +84,61 @@ int last_valid = 0; // posição da última instrução válida do programa
  *   int size: quantidade de bits desse binário
  *
  */
- int bin2dec(bit* binary, int size) {
+int unsigned_bin2dec(bit* binary, int size) {
 	int i;
-	int sum = 0;
+	int decimal = 0;
+    // converter para decimal
 	for (i = 0; i < size; i++) {
 		if ((int)(binary[i])) {
-			sum += pow(2, i);
+			decimal += pow(2, i);
 		}
 	}
-	return sum;
+	return decimal;
  }
+
+
+ /*
+  * signed_bin2dec
+  * ----------------------------
+  *   Retorna valor decimal convertido de um binário
+  *   que pode assumir valor negativo.
+  *
+  *   bit* binary: string que representa o binário
+  *   int size: quantidade de bits desse binário
+  *
+  */
+int signed_bin2dec(bit* binary, int size) {
+ 	int i;
+ 	int decimal = 0;
+
+    // checar bit de sinal
+    if (binary[size-1] == 1) {
+        // fazer complemento de 2
+        for (i = 0; i < size; i++) {
+            if (binary[i] == 0) {
+                binary[i] = 1;
+            } else {
+                binary[i] = 0;
+            }
+        }
+    }
+
+    // converter para decimal
+ 	for (i = 0; i < size; i++) {
+ 		if ((int)(binary[i])) {
+ 			decimal += pow(2, i);
+ 		}
+ 	}
+
+    // checar bit de sinal
+    if (binary[size-1] == 1) {
+        decimal += 1; // somar 1
+        decimal = -decimal; // trocar sinal
+    }
+
+ 	return decimal;
+  }
+
 
 
  /*
@@ -562,11 +607,11 @@ void MUX_WRITE_REG() {
 			switch (RegDst0) {
 				case 0:
 					// escrever no registrador apontado por rt
-					write_reg = get_register(bin2dec(rt, 5));
+					write_reg = get_register(unsigned_bin2dec(rt, 5));
 					break;
 				case 1:
 					// escrever no registrador apontado por rd
-					write_reg = get_register(bin2dec(rd, 5));
+					write_reg = get_register(unsigned_bin2dec(rd, 5));
 					break;
 			}
 		  break;
@@ -713,15 +758,15 @@ void MUX_PC() {
 					pc_write_data = 0;
 					for(i = 0; i < 4; i++)
 						pc_write_data += GETBIT(PC, 31-i) * ((unsigned int)pow(2, 31-i));
-	                    pc_write_data += (bin2dec(jump_addr, 26) << 2);
+	                    pc_write_data += (unsigned_bin2dec(jump_addr, 26) << 2);
 					break;
 				case 1:
 					// PC RECEBE A
 					pc_write_data = A;
 					break;
-			}
-			break;
-	  }
+		    }
+		        break;
+    }
 }
 
 
@@ -809,8 +854,8 @@ void IR_UNIT() {
  *
  */
 void REGISTER_BANK() {
-    A = *(get_register(bin2dec(rs, 5)));
-    B = *(get_register(bin2dec(rt, 5)));
+    A = *(get_register(unsigned_bin2dec(rs, 5)));
+    B = *(get_register(unsigned_bin2dec(rt, 5)));
 
 	if (RegWrite) {
         // registrador recebe conteúdo
@@ -828,7 +873,7 @@ void REGISTER_BANK() {
  *
  */
 void SIGNAL_EXTEND_16_TO_32() {
-	immediate_extended = bin2dec(immediate, 16);
+	immediate_extended = signed_bin2dec(immediate, 16);
 }
 
 
@@ -1370,10 +1415,8 @@ void finalize() {
  * FUNCOES QUE CHAMAM O FUNCIONAMENTO DE TODOS OS COMPONENTES DE ACORDO COM O CLOCK
  * ----------------------------
  */
-void set() {
+void clock() {
     CONTROL();
-    CONTROL_NEXT();
-
     MUX_MEMORY();
     SIGNAL_EXTEND_16_TO_32();
     MUX_ALU_1();
@@ -1384,15 +1427,12 @@ void set() {
     MUX_WRITE_REG();
     MUX_WRITE_DATA();
     MUX_PC();
-}
-
-
-void go() {
     MEMORY_BANK();
     IR_UNIT();
     PROGRAM_COUNTER();
     ALU_OUT();
     REGISTER_BANK();
+    CONTROL_NEXT();
     clocks++;
 }
 
@@ -1569,7 +1609,7 @@ void debugger() {
 
     // exibir próximo estado em decimal para conferir com o diagrama de estados
     fprintf(f_debug, "next state: ");
-    fprintf(f_debug, "%d\n", bin2dec(next_state, 5));
+    fprintf(f_debug, "%d\n", unsigned_bin2dec(next_state, 5));
 
     fprintf(f_debug, "\n");
     fprintf(f_debug, "************************************************************\n");
@@ -1590,8 +1630,7 @@ void debugger() {
 void cycle() {
     while (1) {
         check_status();
-        set();
-        go();
+        clock();
         debugger();
         if (status) {
             break;
@@ -1611,23 +1650,19 @@ void cycle() {
  */
 void interactive() {
     char buffer = '\n';
-    // system("clear");
     while (buffer == '\n') {
         check_status();
         printf("CLOCK ATUAL: %d\n", clocks);
         finalize();
-        printf("continuar? ");
+        printf("ENTER para continuar, qualquer outra para sair: ");
         scanf("%c", &buffer);
-        set();
-        go();
+        clock();
         debugger();
-        // system("clear");
         printf("\n\n");
         if (status) {
             break;
         }
     }
-    // system("clear");
 }
 
 
