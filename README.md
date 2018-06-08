@@ -1,8 +1,6 @@
 ![](https://i.imgur.com/HRJXME4.png)
 
 
----
-
 # Assignment 1
 * [Bitwise Trie](http://www.mathcs.emory.edu/~cheung/Courses/323/Syllabus/Text/trie01.html) implemented in Assembly MIPS
 
